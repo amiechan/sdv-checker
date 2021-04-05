@@ -1,25 +1,23 @@
 {
   "files": {
-    "main.css": "/sdv-checker/static/css/main.8bf3e02c.chunk.css",
-    "main.js": "/sdv-checker/static/js/main.c8441018.chunk.js",
-    "main.js.map": "/sdv-checker/static/js/main.c8441018.chunk.js.map",
-    "runtime-main.js": "/sdv-checker/static/js/runtime-main.1aaf70ad.js",
-    "runtime-main.js.map": "/sdv-checker/static/js/runtime-main.1aaf70ad.js.map",
-    "static/css/2.ef9168ec.chunk.css": "/sdv-checker/static/css/2.ef9168ec.chunk.css",
-    "static/js/2.3ab5e03e.chunk.js": "/sdv-checker/static/js/2.3ab5e03e.chunk.js",
-    "static/js/2.3ab5e03e.chunk.js.map": "/sdv-checker/static/js/2.3ab5e03e.chunk.js.map",
-    "static/js/3.f08880a6.chunk.js": "/sdv-checker/static/js/3.f08880a6.chunk.js",
-    "static/js/3.f08880a6.chunk.js.map": "/sdv-checker/static/js/3.f08880a6.chunk.js.map",
+    "main.css": "/sdv-checker/static/css/main.d5989fdd.chunk.css",
+    "main.js": "/sdv-checker/static/js/main.e9eebd12.chunk.js",
+    "main.js.map": "/sdv-checker/static/js/main.e9eebd12.chunk.js.map",
+    "runtime-main.js": "/sdv-checker/static/js/runtime-main.3ed303e1.js",
+    "runtime-main.js.map": "/sdv-checker/static/js/runtime-main.3ed303e1.js.map",
+    "static/css/2.4c97ca4f.chunk.css": "/sdv-checker/static/css/2.4c97ca4f.chunk.css",
+    "static/js/2.70a6e9df.chunk.js": "/sdv-checker/static/js/2.70a6e9df.chunk.js",
+    "static/js/2.70a6e9df.chunk.js.map": "/sdv-checker/static/js/2.70a6e9df.chunk.js.map",
     "index.html": "/sdv-checker/index.html",
-    "static/css/2.ef9168ec.chunk.css.map": "/sdv-checker/static/css/2.ef9168ec.chunk.css.map",
-    "static/css/main.8bf3e02c.chunk.css.map": "/sdv-checker/static/css/main.8bf3e02c.chunk.css.map",
-    "static/js/2.3ab5e03e.chunk.js.LICENSE.txt": "/sdv-checker/static/js/2.3ab5e03e.chunk.js.LICENSE.txt"
+    "static/css/2.4c97ca4f.chunk.css.map": "/sdv-checker/static/css/2.4c97ca4f.chunk.css.map",
+    "static/css/main.d5989fdd.chunk.css.map": "/sdv-checker/static/css/main.d5989fdd.chunk.css.map",
+    "static/js/2.70a6e9df.chunk.js.LICENSE.txt": "/sdv-checker/static/js/2.70a6e9df.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.1aaf70ad.js",
-    "static/css/2.ef9168ec.chunk.css",
-    "static/js/2.3ab5e03e.chunk.js",
-    "static/css/main.8bf3e02c.chunk.css",
-    "static/js/main.c8441018.chunk.js"
+    "static/js/runtime-main.3ed303e1.js",
+    "static/css/2.4c97ca4f.chunk.css",
+    "static/js/2.70a6e9df.chunk.js",
+    "static/css/main.d5989fdd.chunk.css",
+    "static/js/main.e9eebd12.chunk.js"
   ]
 }
