@@ -31,8 +31,8 @@ const FileUpload = () => {
                         Press the upload button and browse to C:\StardewSaveLink
                         4. Enter the farmname_farmid directory and select the
                         file named farmname_farmid These steps are needed to
-                        enable auto file upload. You can skip these steps are
-                        manually reupload your save file.
+                        enable auto file upload. 
+                        You can skip these steps and manually reupload your save file.
                     </span>
                 </Col>
             </Row>
