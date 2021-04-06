@@ -30,10 +30,15 @@ const Sidebar = () => {
                 <Image className="navIcon" src={playerIcon} />
                 <span className="navText">Farmer</span>
             </Nav.Link>
+            
+            {/* Merged with previous section
+
             <Nav.Link eventKey="link-1">
                 <Image className="navIcon" src={skillsIcon} />
                 <span className="navText">Skills</span>
             </Nav.Link>
+            */}
+
             <Nav.Link eventKey="link-2">
                 <Image className="navIcon" src={friendshipIcon} />
                 <span className="navText">Friendship</span>

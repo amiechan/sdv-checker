@@ -1,4 +1,5 @@
 import Sidebar from "./components/Sidebar";
+import FileUpload from "./components/FileUpload";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const App = () => {
@@ -6,6 +7,9 @@ const App = () => {
         <>
             <div className="sidebar">
                 <Sidebar />
+            </div>
+            <div className="mainContent">
+                <FileUpload />
             </div>
         </>
     );
