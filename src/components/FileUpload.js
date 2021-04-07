@@ -1,19 +1,27 @@
-import React from "react";
+import React, {useState} from "react";
+import parseString from 'xml2js';
 import Card from "react-bootstrap/Card";
-import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 
 const FileUpload = () => {
+
+    const changeHandler = (e) => {
+        console.log("file submitted");
+        var file = e.target.files[0];
+        console.log(file.name);
+
+    };
+
     return (
         <Card body className="contentCard fileDiv">
             <Row>
                 <Col>
-                    <Form>
+                    <Form onChange={changeHandler}>
                         <Form.File
                             id="file-upload"
-                            label="User save file input"
+                            label="Choose a save file"
                             custom
                         />
                     </Form>
@@ -31,8 +39,8 @@ const FileUpload = () => {
                         Press the upload button and browse to C:\StardewSaveLink
                         4. Enter the farmname_farmid directory and select the
                         file named farmname_farmid These steps are needed to
-                        enable auto file upload. 
-                        You can skip these steps and manually reupload your save file.
+                        enable auto file upload. You can skip these steps and
+                        manually reupload your save file.
                     </span>
                 </Col>
             </Row>

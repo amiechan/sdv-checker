@@ -18,7 +18,8 @@
     "react-icons": "^4.2.0",
     "react-scripts": "4.0.3",
     "source-map-explorer": "^2.5.2",
-    "web-vitals": "^1.1.1"
+    "web-vitals": "^1.1.1",
+    "xml2js": "^0.4.23"
   },
   "scripts": {
     "start": "react-scripts start",
