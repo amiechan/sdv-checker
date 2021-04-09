@@ -4,6 +4,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import parse from "./parse";
 
+
 function parseFriendshipData(data) {
     console.log("Parse friendship data");
 
@@ -35,9 +36,9 @@ const Friendship = ({ data }) => {
                               <div className="d-flex justify-content-between px-md-1">
                                   <h4 className="text-primary mb-1"><a href={"https://stardewvalleywiki.com/" + friend[0]} target="_blank">{friend[0]}</a></h4>
                                   <p className="mb-0">Level: {}/10</p>
-                                  <img src="img/${friendLevel}_hearts.png" className="img-fluid" alt="Hearts" style={{ maxWidth: '6.5em' }} />
+                                  <img src={`${process.env.PUBLIC_URL}/img/hearts/` + Math.floor(friend[1]/250) + `_hearts.png`} className="img-fluid" alt="Hearts" style={{ maxHeight: '9px', maxWidth: '119px' }} />
                                 <div className="align-self-center">
-                                  <img src={require("../img/villagers/" + friend[0] + ".png")} className="img-fluid" alt={friend[0]} style={{ maxHeight: '75px', maxWidth: '75px' }} />
+                                  <img src={`${process.env.PUBLIC_URL}/img/villagers/` + friend[0] + `.png`} className="img-fluid" alt={friend[0]} style={{ maxHeight: '75px', maxWidth: '75px' }} />
                                 </div>
                               </div>
                               <div className="px-md-1">
