@@ -21,13 +21,14 @@ const Friendship = ({ data }) => {
         const parser = new DOMParser();
         // XMLDocument object returned by parseFromString to get elements from
         const friendshipData = parser.parseFromString(data, "text/xml");
-        const friendList = parseFriendshipData(friendshipData);
+        const tags = ['string', 'Points', 'Status'];
+        const friendList = parseFriendshipData(friendshipData,);
 
         return (
             <Card body className="contentCard fileDiv">
                 <h5>Friendship</h5>
                 <>
-                    {friendList.map((friend, index) => (
+                    {friendList.map((friend) => (
                         <>
                         <Col className="col-xl-3 col-6 p-1">
                           <Card>
