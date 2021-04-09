@@ -3,7 +3,7 @@ import Nav from "react-bootstrap/Nav";
 import Image from "react-bootstrap/Image";
 import projectIcon from "../img/projectIcon.png";
 import playerIcon from "../img/navIcons/playerIcon.png";
-import skillsIcon from "../img/navIcons/skillsIcon.png";
+//import skillsIcon from "../img/navIcons/skillsIcon.png";
 import friendshipIcon from "../img/navIcons/friendshipIcon.png";
 import craftingIcon from "../img/navIcons/craftingIcon.png";
 import itemShippedIcon from "../img/navIcons/itemShippedIcon.png";
