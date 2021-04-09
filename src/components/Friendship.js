@@ -27,9 +27,31 @@ const Friendship = ({ data }) => {
                 <h5>Friendship</h5>
                 <>
                     {friendList.map((friend, index) => (
-                        <Card body key={index} className="friendCard">
-                            {friend[0]}/{friend[1]}/{friend[2]}
-                        </Card>
+                        <>
+                        <Col className="col-xl-3 col-6 p-1">
+                          <Card>
+                            <Card.Body className="p-2">
+                              <>
+                              <div className="d-flex justify-content-between px-md-1">
+                                  <h4 className="text-primary mb-1"><a href={"https://stardewvalleywiki.com/" + friend[0]} target="_blank">{friend[0]}</a></h4>
+                                  <p className="mb-0">Level: {}/10</p>
+                                  <img src="img/${friendLevel}_hearts.png" className="img-fluid" alt="Hearts" style={{ maxWidth: '6.5em' }} />
+                                <div className="align-self-center">
+                                  <img src={require("../img/villagers/" + friend[0] + ".png")} className="img-fluid" alt={friend[0]} style={{ maxHeight: '75px', maxWidth: '75px' }} />
+                                </div>
+                              </div>
+                              <div className="px-md-1">
+                                <div className="progress mt-1 mb-1 rounded" style={{ height: '7px' }}>
+                                  <div className="progress-bar bg-danger" role="progressbar" style={{ width: '${friendPercent}%' }} aria-valuenow="${friendPercent}" aria-valuemin={0} aria-valuemax={100} />
+                                </div>
+                                <p className="mb-0">Exp: {friend[1]}/250</p>
+                              </div>
+                              </>
+                            </Card.Body>
+                          </Card>
+                        </Col>
+                
+                      </>
                     ))}
                 </>
             </Card>
