@@ -22,6 +22,7 @@ const Friendship = ({ data }) => {
                         <Card body key={friendIndex} className="friendCard">
                             {friend.value.map((attr, attrIndex) => (
                                 <p>
+                                    {/* need to fix? */}
                                     {attr.[tags[attrIndex]]}
                                 </p>
                             ))}
