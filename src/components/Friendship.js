@@ -2,6 +2,7 @@ import React from "react";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import parse from "./parse";
 
 function parseFriendshipData(data) {
     console.log("Parse friendship data");
@@ -11,27 +12,7 @@ function parseFriendshipData(data) {
     console.log(children.length);
     var count = children.length;
 
-    // new empty array to store parsed friend info
-    var friends = [];
-
-    // parse for name, points, and status
-    for (let i = 0; i < count; i++) {
-        if (data.getElementsByTagName("string")[i].textContent !== "Henchman") {
-            let friendName = data.getElementsByTagName("string")[i].textContent;
-            let friendPoints = data.getElementsByTagName("Points")[i]
-                .textContent;
-            let friendStatus = data.getElementsByTagName("Status")[i]
-                .textContent;
-
-            // add friend to array
-            friends.push({
-                name: friendName,
-                points: friendPoints,
-                status: friendStatus,
-            });
-        }
-    }
-    return friends;
+    return parse(["string", "Points", "Status"], data);
 }
 
 const Friendship = ({ data }) => {
@@ -47,7 +28,7 @@ const Friendship = ({ data }) => {
                 <>
                     {friendList.map((friend, index) => (
                         <Card body key={index} className="friendCard">
-                            {friend.name}/{friend.points}/{friend.status}
+                            {friend[0]}/{friend[1]}/{friend[2]}
                         </Card>
                     ))}
                 </>
