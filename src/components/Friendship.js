@@ -41,7 +41,6 @@ const Friendship = ({ data }) => {
                             </Card.Body>
                           </Card>
                         </Col>
-                
                       </>
                     ))}
                 </>
