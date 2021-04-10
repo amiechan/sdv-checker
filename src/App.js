@@ -1,17 +1,18 @@
+import { Container, Col, Row } from "react-bootstrap";
 import Sidebar from "./components/Sidebar";
 import FileUpload from "./components/FileUpload";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const App = () => {
     return (
-        <>
-            <div className="sidebar">
+        <Row>
+            <div className="sidebar col-xl-2 col-12">
                 <Sidebar />
             </div>
-            <div className="mainContent">
+            <Col className="mainContent ml-1">
                 <FileUpload />
-            </div>
-        </>
+            </Col>
+        </Row>
     );
 };
 

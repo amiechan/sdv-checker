@@ -22,8 +22,8 @@
 /* navbar container */
 .sidebar {
     height: 100vh; /* full height */
-    width: 250px;
-    position: fixed;
+    max-width: 250px !important;
+    position: sticky !important;
     top: 0; /* stay at the top */
     left: 0;
     z-index: 1; /* stay on top */
