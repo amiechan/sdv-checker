@@ -1,30 +1,20 @@
 function parse(data, tags) {
-    console.log("Parse data");
+    let root = data.documentElement;
+    let children = root.childNodes;
+    let itemArray = [];
 
-    var root = data.documentElement;
-    var children = root.childNodes;
-    var itemCount = children.length;
-    var attrCount = tags.length;
-    var itemArray = [];
-
-    for (let i = 0; i < itemCount; i++) {
-        var attr = {};
-
-        for (let j = 0; j < attrCount; j++) {
-            var attrName = tags[j];
-            var attrValue = data.getElementsByTagName(attrName)[i].textContent;
-            attr[attrName] = attrValue;
-            // edit
-        }
-
-        itemArray.push({
-            attr
-        });
-    }
-
+    children.forEach( (child, childIndex) => {
+        // Make a new dict for each child
+        let  attrDict = {};
+        tags.forEach(tag => {
+            // Insert a tag:value pair for each tag
+            attrDict[tag] = data.getElementsByTagName(tag)[childIndex].textContent;
+        })
+        // Add the dict to the main array
+        itemArray.push(attrDict);
+    })
+  
     return itemArray;
 }
 
 export default parse;
-
-

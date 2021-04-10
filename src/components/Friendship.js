@@ -16,7 +16,7 @@ const Friendship = ({ data }) => {
                 <>
                     {friendList.map((friend, friendIndex) => (
                         <Card body key={friendIndex} className="friendCard">
-                            <p>{friend.attr.string}/{friend.attr.Points}/{friend.attr.Status}</p>
+                            <p>{friend["string"]}/{friend["Points"]}/{friend["Status"]}</p>
                         </Card>
                     ))}
                 </>
