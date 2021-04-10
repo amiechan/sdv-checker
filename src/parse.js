@@ -13,6 +13,7 @@ function parse(data, tags) {
         // Add the dict to the main array
         itemArray.push(attrDict);
     })
+  
     return itemArray;
 }
 
