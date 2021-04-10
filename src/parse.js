@@ -14,7 +14,7 @@ function parse(data, tags) {
             var attrName = tags[j];
             var attrValue = data.getElementsByTagName(attrName)[i].textContent;
             attr[attrName] = attrValue;
-            
+            // edit
         }
 
         itemArray.push({
