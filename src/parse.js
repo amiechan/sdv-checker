@@ -6,10 +6,10 @@ function parse(data, tags) {
     var itemCount = children.length;
     var attrCount = tags.length;
     var itemArray = [];
-    
+
     for (let i = 0; i < itemCount; i++) {
         var attrArray = [];
-        
+
         for (let j = 0; j < attrCount; j++) {
             var attrName = tags[j];
             var attrValue = data.getElementsByTagName(attrName)[i].textContent;
@@ -18,15 +18,17 @@ function parse(data, tags) {
                 [attrName]: attrValue,
             });
         }
-    
+
         itemArray.push({
-            value: attrArray
+            attrArray
         });
-        
-        console.log(itemArray);
+
     }
 
+    console.log(itemArray);
     return itemArray;
 }
 
 export default parse;
+
+

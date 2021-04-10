@@ -12,7 +12,7 @@ const Friendship = ({ data }) => {
         const tags = ["string", "Points", "Status"];
         const friendList = parse(friendshipData, tags);
 
-        console.log(friendList[0].value[0].string);
+        console.log(friendList[0].attrArray[0].string);
 
         return (
             <Card body className="contentCard fileDiv">
@@ -20,7 +20,7 @@ const Friendship = ({ data }) => {
                 <>
                     {friendList.map((friend, friendIndex) => (
                         <Card body key={friendIndex} className="friendCard">
-                            {friend.value.map((attr, attrIndex) => (
+                            {friend.attrArray.map((attr, attrIndex) => (
                                 <p>
                                     {/* need to fix? */}
                                     {attr.[tags[attrIndex]]}
