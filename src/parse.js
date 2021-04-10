@@ -8,24 +8,20 @@ function parse(data, tags) {
     var itemArray = [];
 
     for (let i = 0; i < itemCount; i++) {
-        var attrArray = [];
+        var attr = {};
 
         for (let j = 0; j < attrCount; j++) {
             var attrName = tags[j];
             var attrValue = data.getElementsByTagName(attrName)[i].textContent;
-
-            attrArray.push({
-                [attrName]: attrValue,
-            });
+            attr[attrName] = attrValue;
+            
         }
 
         itemArray.push({
-            attrArray
+            attr
         });
-
     }
 
-    console.log(itemArray);
     return itemArray;
 }
 
