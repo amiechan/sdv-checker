@@ -1,18 +1,6 @@
 import React from "react";
 import { Card, Row, Col, Accordion, Container } from "react-bootstrap";
-import parse from "./parse";
-
-
-function parseFriendshipData(data) {
-  console.log("Parse friendship data");
-
-  var root = data.documentElement;
-  var children = root.childNodes;
-  console.log(children.length);
-  var count = children.length;
-
-  return parse(["string", "Points", "Status"], data);
-}
+import parse from "../parse";
 
 const Friendship = ({ data }) => {
   if (data !== "") {
@@ -20,7 +8,7 @@ const Friendship = ({ data }) => {
     // XMLDocument object returned by parseFromString to get elements from
     const friendshipData = parser.parseFromString(data, "text/xml");
     const tags = ['string', 'Points', 'Status'];
-    const friendList = parseFriendshipData(friendshipData,);
+    const friendList = parse(friendshipData, tags);
 
     return (
         <Container fluid body >

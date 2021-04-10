@@ -1,23 +1,16 @@
-export const parse = (list, data) => {
+function parse(data, tags) {
     var root = data.documentElement;
     var children = root.childNodes;
-    console.log(children.length);
-    var count = children.length;
-
-    // new empty array to store parsed info
-    var items = [];
-
-    // For each child
-    for (let i = 0; i < count; i++) {
-        // Push a new array
-        items.push(
-            // Containing the textContent of each item in items
-            list.map(item => {
-                return data.getElementsByTagName(item)[i].textContent;
-            })
-        );
-    }
-    return items;
+    var itemArray = [];
+    console.log(tags);
+    children.forEach( (child, childIndex) => {
+        let attrDict = {};
+        tags.forEach(tag => {
+            attrDict[tag] = data.getElementsByTagName(tag)[childIndex].textContent;
+        })
+        itemArray.push(attrDict);
+    });
+    return itemArray;
 }
 
 export default parse;
