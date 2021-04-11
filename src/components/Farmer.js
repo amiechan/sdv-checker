@@ -40,7 +40,7 @@ const Friendship = ({ professionsDataString, skillExpDataString }) => {
         skillExp.pop();
         console.log(skillExp);
         
-        // combine skill name, lowerLevel, upperLevel, exp, percentage,
+        // combine skill name, lowerLevel, upperLevel, exp, percentage, maybe combine with professions?
         const skillCombinedData = combineSkillData(skillExp);
         
 
