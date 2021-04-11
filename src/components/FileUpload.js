@@ -3,6 +3,7 @@ import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
+import Farmer from "./Farmer";
 import Friendship from "./Friendship";
 
 function getDataString(data, startTag, endTag) {
@@ -13,20 +14,33 @@ function getDataString(data, startTag, endTag) {
 };
 
 const FileUpload = () => {
+    // Player (Player Info, Professions, Skill Exp)
+    const [professionsDataString, setProfessionsDataString] = useState("");
+    const [skillExpDataString, setSkillExpDataString] = useState("");
+    
+    // Friendship (Villager Name, Points, Status )
     const [friendshipDataString, setFriendshipDataString] = useState("");
 
     const changeHandler = (e) => {
-        console.log("file submitted");
         // get file
         var file = e.target.files[0];
-        console.log(file.name);
+        console.log("file name:" + file.name);
 
         var fileRead = new FileReader();
         fileRead.readAsText(file);
         fileRead.onloadend = function () {
             // entire xml file as string
             var xmlData = fileRead.result;
-            console.log("xmlData: ", xmlData);
+
+            // Player
+            setProfessionsDataString(
+                getDataString(xmlData, "<professions>", "</professions>")
+            );
+            setSkillExpDataString(
+                getDataString(xmlData, "<experiencePoints>", "</experiencePoints>")
+            );
+
+            // Friendship
             setFriendshipDataString(
                 getDataString(xmlData, "<friendshipData>", "</friendshipData>")
             );
@@ -80,8 +94,8 @@ const FileUpload = () => {
             </Card>
 
             {/* other components */}
-            <Friendship data={friendshipDataString} />
-
+            <Farmer professionsDataString={professionsDataString} skillExpDataString={skillExpDataString} />
+            <Friendship friendshipDataString={friendshipDataString} />
         </div>
     );
 };
