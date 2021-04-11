@@ -34,7 +34,7 @@ const FileUpload = () => {
     };
 
     return (
-        <Col>
+        <div>
             {/* File Upload Component */}
             <Card body className="contentCard fileDiv">
                 <Row>
@@ -78,9 +78,11 @@ const FileUpload = () => {
                     </Col>
                 </Row>
             </Card>
-                {/* other components */}
-                <Friendship data={friendshipDataString} />
-        </Col>
+
+            {/* other components */}
+            <Friendship data={friendshipDataString} />
+
+        </div>
     );
 };
 
