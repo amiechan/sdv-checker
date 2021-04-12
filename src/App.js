@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 const App = () => {
     return (
         <Row>
-            <div className="sidebar col-xl-2 col-12">
+            <div className="sidebar col-xl-2 col-12 p-0" >
                 <Sidebar />
             </div>
             <Col className="mainContent ml-1">
