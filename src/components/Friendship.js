@@ -20,7 +20,7 @@ const Friendship = ({ data }) => {
             {friendList.map((friend, index) => (
               <Col className="p-1">
                 <Accordion>
-                  <Card>
+                  <Card className="friendCard">
                     <Accordion.Toggle className="p-0" as={Card.Header} eventKey="0">
                       <Card body key={index} className="friendCard">
                         <Card.Title><a href={"https://stardewvalleywiki.com/" + friend['string']} target="_blank">{friend['string']}</a></Card.Title>
@@ -28,7 +28,7 @@ const Friendship = ({ data }) => {
                         <Card.Text className="text-center">
                           <br />
                           {friend['Points'] % 250} / 250
-                    <ProgressBar className="mb-3" max="250" variant="danger" now={(friend['Points'] % 250)} />
+                          <ProgressBar className="mb-3" max="250" variant="danger" now={(friend['Points'] % 250)} />
                           <Image fluid className="heartResize" src={`${process.env.PUBLIC_URL}/img/hearts/` + Math.floor(friend['Points'] / 250) + `_hearts_stack.png`}></Image>
                         </Card.Text>
                       </Card>
