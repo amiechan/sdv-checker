@@ -15,9 +15,10 @@ const FileUpload = () => {
 
     async function getTheFile() {
         let fileHandle;
+        // Get file location
         [fileHandle] = await window.showOpenFilePicker();
         while (true) {
-            // get file contents
+            // Get file contents
             const fileData = await fileHandle.getFile();
             console.log("file submitted");
 
