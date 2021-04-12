@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import Card from "react-bootstrap/Card";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+import { Card, Row, Col, Button } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import Friendship from "./Friendship";
 
@@ -15,37 +13,36 @@ function getDataString(data, startTag, endTag) {
 const FileUpload = () => {
     const [friendshipDataString, setFriendshipDataString] = useState("");
 
-    const changeHandler = (e) => {
-        console.log("file submitted");
-        // get file
-        var file = e.target.files[0];
-        console.log(file.name);
+    async function getTheFile() {
+        let fileHandle;
+        [fileHandle] = await window.showOpenFilePicker();
+        while (true) {
+            // get file contents
+            const fileData = await fileHandle.getFile();
+            console.log("file submitted");
 
-        var fileRead = new FileReader();
-        fileRead.readAsText(file);
-        fileRead.onloadend = function () {
-            // entire xml file as string
-            var xmlData = fileRead.result;
-            console.log("xmlData: ", xmlData);
-            setFriendshipDataString(
-                getDataString(xmlData, "<friendshipData>", "</friendshipData>")
-            );
-        };
+            var fileRead = new FileReader();
+            fileRead.readAsText(fileData);
+            fileRead.onloadend = function () {
+                // entire xml file as string
+                var xmlData = fileRead.result;
+                console.log("xmlData: ", xmlData);
+                setFriendshipDataString(
+                    getDataString(xmlData, "<friendshipData>", "</friendshipData>")
+                );
+            };
+            // sleep
+            await new Promise(r => setTimeout(r, 20000));
+        }
+
     };
-
     return (
         <div>
             {/* File Upload Component */}
             <Card body className="contentCard fileDiv">
                 <Row>
                     <Col>
-                        <Form onChange={changeHandler}>
-                            <Form.File
-                                id="file-upload"
-                                label="Choose a save file"
-                                custom
-                            />
-                        </Form>
+                        <Button type="button" className="btn btn-info" onClick={getTheFile}>Upload save</Button>
                     </Col>
                     <Col>
                         <div id="fileUploadInfo">
