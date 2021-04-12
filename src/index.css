@@ -71,17 +71,16 @@
     margin: 20px;
 }
 
-#fileUploadInfo {
-    font-size: 8pt;
-}
-
 /* friendship */
 .friendCard {
     display: inline-block;
-    width: 200px;
+    width: 150px;
 }
 
 .heartResize{
-    width: 150px;
     height: auto;
+}
+
+.progress {
+    height: 0.75rem !important;
 }

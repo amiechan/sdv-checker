@@ -40,8 +40,8 @@ const FileUpload = () => {
         <div>
             {/* File Upload Component */}
             <Card body className="contentCard fileDiv">
-                <Row>
-                    <Col>
+                <Row >
+                    <Col className="col-12 m-3">
                         <Button type="button" className="btn btn-info" onClick={getTheFile}>Upload save</Button>
                     </Col>
                     <Col>
@@ -68,9 +68,6 @@ const FileUpload = () => {
                                     select the file named farmname_farmid.
                                 </li>
                             </ol>
-                            These steps are needed to enable auto file upload.
-                            You can skip these steps and manually reupload your
-                            save file.
                         </div>
                     </Col>
                 </Row>
