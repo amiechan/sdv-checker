@@ -18,7 +18,7 @@ It was developed as a course project for GUI Programming II at UMass Lowell.
 - Friendship points
 - Friendship status
 
-### Features to be added:
+## Features to be added:
 - Item crafting tracking (whether you have crafted an item and have the recipe for it)
 - Collections (if you have collected an item in the fishing, shipping, artifacts, minerals, or cooking categories)
 - Community Bundle or Joja Progress (CC bundles to be customized towards playthrough (i.e. if you have selected remixed bundles, or if Joja bundles are purchased)
