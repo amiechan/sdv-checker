@@ -1,6 +1,6 @@
 # sdv-checker app
 
-This app checks your Stardew Valley save file and shows your information about your playthrough.
+This app parses your Stardew Valley save file and displays information about your playthrough.
 It was developed as a course project for GUI Programming II at UMass Lowell. 
 
 (Example screenshots to be added in the future.)
