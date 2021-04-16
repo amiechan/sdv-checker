@@ -18,7 +18,7 @@ import grandpaIcon from "../img/navIcons/grandpaIcon.png";
 
 const Sidebar = () => {
     return (
-        <Nav defaultActiveKey="/home" className="flex-column" variant="pills">
+        <Nav defaultActiveKey="Farmer" className="flex-column" variant="pills">
             {/* Nav Header */}
             <Nav.Item className="navHeader">
                 <Image className="navHeaderIcon" src={projectIcon} />
@@ -26,7 +26,7 @@ const Sidebar = () => {
             </Nav.Item>
 
             {/* Nav Menu */}
-            <Nav.Link href="/home">
+            <Nav.Link eventKey="Farmer">
                 <Image className="navIcon" src={playerIcon} />
                 <span className="navText">Farmer</span>
             </Nav.Link>
