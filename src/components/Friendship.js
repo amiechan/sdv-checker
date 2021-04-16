@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Row, Col, Accordion, Container } from "react-bootstrap";
+import { Card, Row, Col, ProgressBar } from "react-bootstrap";
 import parse from "../parse";
 
 const Friendship = ({ friendshipDataString }) => {
