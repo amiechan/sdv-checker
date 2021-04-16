@@ -13,8 +13,25 @@ function getDataString(data, startTag, endTag) {
     return dataString;
 };
 
+function capitalizeFirstLetter(string) {
+    return (string.slice(0, 15) + string.charAt(15).toUpperCase() + string.slice(16));
+};
+
+function getPlayerData(data) {
+    var starterTag = "<playerInfo><data>";
+    var playerInfo = getDataString(data, "<player>", "</player>");
+    var playerName = getDataString(playerInfo, "<name>", "</name>");
+    var playerSeason = capitalizeFirstLetter(getDataString(data, "<currentSeason>", "</currentSeason>"));
+    var playerYear = getDataString(data, "<year>", "</year>");
+    var playerDay = getDataString(data, "<dayOfMonth>", "</dayOfMonth>");
+    var endingTag = "</data></playerInfo>";
+    var playerString = starterTag.concat(playerName, playerDay, playerSeason, playerYear, endingTag);
+    return playerString;
+};
+
 const FileUpload = () => {
     // Player (Player Info, Professions, Skill Exp)
+    const [playerDataString, setPlayerDataString] = useState("");
     const [professionsDataString, setProfessionsDataString] = useState("");
     const [skillExpDataString, setSkillExpDataString] = useState("");
     
@@ -33,6 +50,9 @@ const FileUpload = () => {
             var xmlData = fileRead.result;
 
             // Player
+            setPlayerDataString(
+                getPlayerData(xmlData)
+            );
             setProfessionsDataString(
                 getDataString(xmlData, "<professions>", "</professions>")
             );
@@ -94,7 +114,7 @@ const FileUpload = () => {
             </Card>
 
             {/* other components */}
-            <Farmer professionsDataString={professionsDataString} skillExpDataString={skillExpDataString} />
+            <Farmer playerDataString={playerDataString} professionsDataString={professionsDataString} skillExpDataString={skillExpDataString} />
             <Friendship friendshipDataString={friendshipDataString} />
         </div>
     );

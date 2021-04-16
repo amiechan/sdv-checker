@@ -1,12 +1,8 @@
 import React from "react";
 import { ProgressBar, Card, Row, Col, Container, Image } from "react-bootstrap";
 import parse from "../parse";
-import Combat from "../img/skillIcons/Combat.png"
-import Fishing from "../img/skillIcons/Fishing.png"
-import Foraging from "../img/skillIcons/Foraging.png"
-import Mining from "../img/skillIcons/Mining.png"
 
-const Friendship = ({ professionsDataString, skillExpDataString }) => {
+const Friendship = ({ playerDataString, professionsDataString, skillExpDataString }) => {
 
     // function takes array of skill xp levels 
     // returns array with additional info for each skill for rendering
@@ -119,19 +115,21 @@ const Friendship = ({ professionsDataString, skillExpDataString }) => {
     if ((professionsDataString !== "") && (skillExpDataString !== "")) {
         const parser = new DOMParser();
         // XMLDocument object returned by parseFromString to get elements from
-
+        // name, day, season, year
+        const playerData = parser.parseFromString(playerDataString, "text/xml");
         const professionsData = parser.parseFromString(professionsDataString, "text/xml");
         const skillExpData = parser.parseFromString(skillExpDataString, "text/xml");
-        const tags = ["int"];
+        const farmerInfoTags = ["name", "dayOfMonth", "currentSeason", "year"]
+        const professionSkilltags = ["int"];
+        
+        const player = parse(playerData, farmerInfoTags);
 
-        const professions = parse(professionsData, tags);
-        console.log(professions);
+        const professions = parse(professionsData, professionSkilltags);
         const playerProfessions = defineProfessions(professions);
-        console.log(playerProfessions);
 
         // order: farming, fishing, foraging, mining, combat 
         // 6th skill parsed is "Luck", but not currently implemented in the game
-        const skillExp = parse(skillExpData, tags);
+        const skillExp = parse(skillExpData, professionSkilltags);
         skillExp.pop();
         // combine skill name, lowerLevel, upperLevel, exp, percentage, maybe combine with professions?
         const playerSkills = combineSkillData(skillExp);
@@ -141,6 +139,12 @@ const Friendship = ({ professionsDataString, skillExpDataString }) => {
                 <h5>Farmer</h5>
                 <Row>
                     <Col id="Farmer Information">
+                        <>
+                            <Card>
+                                <Card.Title>{player[0]["name"]}</Card.Title>
+                                <Card.Text>Day {player[0]["dayOfMonth"]} of {player[0]["currentSeason"]}, Year {player[0]["year"]}</Card.Text>
+                            </Card>
+                        </>
                     </Col>
                     <Col id="Skills">
                         <>
