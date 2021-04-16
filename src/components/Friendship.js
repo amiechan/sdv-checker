@@ -35,7 +35,7 @@ const Friendship = ({ data }) => {
             ))}
           </>
         </Row>
-      </Card >
+      </Card>
 
     );
   } else {
