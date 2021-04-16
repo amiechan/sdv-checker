@@ -10,7 +10,9 @@ const Friendship = ({ data }) => {
     // XMLDocument object returned by parseFromString to get elements from
     const friendshipData = parser.parseFromString(data, "text/xml");
     const tags = ["string", "Points", "Status"];
-    const friendList = parse(friendshipData, tags);
+    let friendList = parse(friendshipData, tags);
+    // Henchman isn't a friend
+    friendList = friendList.filter(friend => friend["string"] !== 'Henchman');
 
     return (
       <Card body className="contentCard fileDiv">
