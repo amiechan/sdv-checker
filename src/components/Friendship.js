@@ -1,7 +1,5 @@
 import React from "react";
-import {
-  Row, Col, Card, ProgressBar
-} from "react-bootstrap";
+import { Card, Row, Col, Accordion, Container } from "react-bootstrap";
 import parse from "../parse";
 
 const Friendship = ({ friendshipDataString }) => {
@@ -36,7 +34,6 @@ const Friendship = ({ friendshipDataString }) => {
           </>
         </Row>
       </Card>
-
     );
   } else {
     return (
