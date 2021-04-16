@@ -2,14 +2,14 @@ import React from "react";
 import { Card, Row, Col, Accordion, Container } from "react-bootstrap";
 import parse from "../parse";
 
-const Friendship = ({ data }) => {
-    if (data !== "") {
+const Friendship = ({ friendshipDataString }) => {
+    if (friendshipDataString !== "") {
         const parser = new DOMParser();
         // XMLDocument object returned by parseFromString to get elements from
-        const friendshipData = parser.parseFromString(data, "text/xml");
+        const friendshipData = parser.parseFromString(friendshipDataString, "text/xml");
         const tags = ["string", "Points", "Status"];
         const friendList = parse(friendshipData, tags);
-
+        console.log(friendList);
         return (
             <Card body className="contentCard fileDiv">
                 <h5>Friendship</h5>
