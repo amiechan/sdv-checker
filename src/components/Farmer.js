@@ -1,6 +1,10 @@
 import React from "react";
-import {ProgressBar, Card, Row, Col}  from "react-bootstrap";
+import { ProgressBar, Card, Row, Col, Container, Image } from "react-bootstrap";
 import parse from "../parse";
+import Combat from "../img/skillIcons/Combat.png"
+import Fishing from "../img/skillIcons/Fishing.png"
+import Foraging from "../img/skillIcons/Foraging.png"
+import Mining from "../img/skillIcons/Mining.png"
 
 const Friendship = ({ professionsDataString, skillExpDataString }) => {
 
@@ -13,7 +17,7 @@ const Friendship = ({ professionsDataString, skillExpDataString }) => {
         const totalLevelExp = [100, 380, 770, 1300, 2150, 3300, 4800, 6900, 10000, 15000];
         const levelExp = [100, 280, 390, 530, 850, 1150, 1500, 2100, 3100, 5000];
 
-        skillExpData.forEach( (skill, skillIndex) => {
+        skillExpData.forEach((skill, skillIndex) => {
             let skillDict = {};
             var name = skillNames[skillIndex];
             var totalSkillExp, lowerBound, upperBound, currentLevelExp, totalCurrentLevelExp, currentLevel;
@@ -33,7 +37,7 @@ const Friendship = ({ professionsDataString, skillExpDataString }) => {
                     } else if (totalSkillExp < totalLevelExp[i]) { // inbetween bounds
                         lowerBound = i;
                         upperBound = i + 1;
-                        currentLevelExp = totalSkillExp - totalLevelExp[i-1];
+                        currentLevelExp = totalSkillExp - totalLevelExp[i - 1];
                         totalCurrentLevelExp = levelExp[lowerBound];
                         currentLevel = lowerBound;
                         break;
@@ -61,8 +65,8 @@ const Friendship = ({ professionsDataString, skillExpDataString }) => {
             skillDict["currentLevel"] = currentLevel;
             // next level
             skillDict["upperBound"] = upperBound;
-            
-            
+
+
             combinedData.push(skillDict);
         })
         console.log(combinedData);
@@ -70,12 +74,12 @@ const Friendship = ({ professionsDataString, skillExpDataString }) => {
     }
 
     function defineProfessions(professionData) {
-        const professionTitles = ["Rancher", "Tiller", "Coopmaster", "Shepherd", "Artisan", "Agriculturist", 
-                                    "Fisher", "Trapper", "Angler", "Pirate", "Mariner", "Luremaster",
-                                    "Forester", "Gatherer", "Lumberjack", "Tapper", "Botanist", "Tracker",
-                                    "Miner", "Geologist", "Blacksmith", "Prospector", "Excavator", "Gemologist",
-                                    "Fighter", "Scout", "Brute", "Defender", "Acrobat", "Desperado"];
-        
+        const professionTitles = ["Rancher", "Tiller", "Coopmaster", "Shepherd", "Artisan", "Agriculturist",
+            "Fisher", "Trapper", "Angler", "Pirate", "Mariner", "Luremaster",
+            "Forester", "Gatherer", "Lumberjack", "Tapper", "Botanist", "Tracker",
+            "Miner", "Geologist", "Blacksmith", "Prospector", "Excavator", "Gemologist",
+            "Fighter", "Scout", "Brute", "Defender", "Acrobat", "Desperado"];
+
         var professions = {};
         var combatProfessions = [];
         var miningProfessions = [];
@@ -108,14 +112,14 @@ const Friendship = ({ professionsDataString, skillExpDataString }) => {
         professions["Foraging"] = foragingProfessions;
         professions["Mining"] = miningProfessions;
         professions["Combat"] = combatProfessions;
-                        
+
         return professions;
     }
 
     if ((professionsDataString !== "") && (skillExpDataString !== "")) {
         const parser = new DOMParser();
         // XMLDocument object returned by parseFromString to get elements from
-        
+
         const professionsData = parser.parseFromString(professionsDataString, "text/xml");
         const skillExpData = parser.parseFromString(skillExpDataString, "text/xml");
         const tags = ["int"];
@@ -131,7 +135,7 @@ const Friendship = ({ professionsDataString, skillExpDataString }) => {
         skillExp.pop();
         // combine skill name, lowerLevel, upperLevel, exp, percentage, maybe combine with professions?
         const playerSkills = combineSkillData(skillExp);
-        
+
         return (
             <Card body className="contentCard fileDiv">
                 <h5>Farmer</h5>
@@ -139,36 +143,44 @@ const Friendship = ({ professionsDataString, skillExpDataString }) => {
                     <Col id="Farmer Information">
                     </Col>
                     <Col id="Skills">
-                    <>
-                    {playerSkills.map((skill, skillIndex) => (
-                        <Card>
-                            <Card.Title>{skill["name"]} (Level {skill["currentLevel"]})</Card.Title>
-                            <Card.Body body key={skillIndex} >
-                                <Card.Text>
-                                    <p>{skill["lowerBound"]}</p>
-                                    <ProgressBar max={skill["totalCurrentLevelExp"]} now={skill["currentLevelExp"]}  />
-                                    <p>{skill["upperBound"]}</p>
-                                    <p>{skill["currentLevelExp"]}/{skill["totalCurrentLevelExp"]}</p>
-                                    {(15000 - skill["totalSkillExp"]) !== 0 ? (
-                                        <div>
-                                            <p>{skill["totalCurrentLevelExp"] - skill["currentLevelExp"]} XP to next level</p>
-                                            <p>{15000 - skill["totalSkillExp"]} XP to max skill</p>
-                                        </div>
-                                    ) : (<></>)}
-                                    {(skill["currentLevel"]) >= 5 ? (
-                                        <p>{playerProfessions[skill["name"]][0]}</p>
-                                    ):(<></>)}
-                                    {(skill["currentLevel"]) === 10 ? (
-                                        <p>{playerProfessions[skill["name"]][1]}</p>
-                                    ):(<></>)}
+                        <>
+                            {playerSkills.map((skill, skillIndex) => (
+                                <Card>
+                                    <Container>
+                                        <br />
+                                        <Card.Title className="text-center" >{skill["name"]} (Level {skill["currentLevel"]})</Card.Title>
+                                        <Image src={`${process.env.PUBLIC_URL}/img/skillIcons/` + skill["name"] + `.png`} />
+                                        <Card.Body body key={skillIndex} >
+                                            <Card.Text>
+                                                <Row>
+                                                    <Col xs xl="1"><p>{skill["lowerBound"]}</p></Col>
+                                                    <Col xs xl="10"><ProgressBar max={skill["totalCurrentLevelExp"]} now={skill["currentLevelExp"]} /></Col>
+                                                    <Col xs xl="1"><p>{skill["upperBound"]}</p></Col>
+                                                </Row>
+                                                <p className="text-center">{skill["currentLevelExp"]}/{skill["totalCurrentLevelExp"]}</p>
+                                                {(15000 - skill["totalSkillExp"]) !== 0 ? (
+                                                    <Row className="text-center">
+                                                        <Col xs lg="6"><p>{skill["totalCurrentLevelExp"] - skill["currentLevelExp"]} XP to next level</p></Col>
+                                                        <Col xs ls="6"><p>{15000 - skill["totalSkillExp"]} XP to max skill</p></Col>
+                                                    </Row>
+                                                ) : (<></>)}
+                                                <Row className="text-center">
+                                                    {(skill["currentLevel"]) >= 5 ? (
+                                                        <Col xs lg="6"><p>{playerProfessions[skill["name"]][0]}</p></Col>
+                                                    ) : (<></>)}
+                                                    {(skill["currentLevel"]) === 10 ? (
+                                                        <Col xs lg="6"><p>{playerProfessions[skill["name"]][1]}</p></Col>
+                                                    ) : (<></>)}
+                                                </Row>
 
-                                    
-                                </Card.Text>
-                            </Card.Body>
-                        </Card>
-                        
-                    ))}
-                </>
+
+                                            </Card.Text>
+                                        </Card.Body>
+                                    </Container>
+                                </Card>
+
+                            ))}
+                        </>
                     </Col>
                 </Row>
             </Card>
