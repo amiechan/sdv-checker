@@ -1,5 +1,5 @@
 import React from "react";
-import Card from "react-bootstrap/Card";
+import { Card, Row, Col, Accordion, Container } from "react-bootstrap";
 import parse from "../parse";
 
 const Friendship = ({ friendshipDataString }) => {
@@ -13,13 +13,14 @@ const Friendship = ({ friendshipDataString }) => {
         return (
             <Card body className="contentCard fileDiv">
                 <h5>Friendship</h5>
-                <>
-                    {friendList.map((friend, friendIndex) => (
-                        <Card body key={friendIndex} className="friendCard">
-                            <p>{friend["string"]}/{friend["Points"]}/{friend["Status"]}</p>
-                        </Card>
-                    ))}
-                </>
+                {friendList.map((friend, friendIndex) => (
+                    <Card body key={friendIndex} className="friendCard">
+                        <p>
+                            {friend["string"]}/{friend["Points"]}/
+                            {friend["Status"]}
+                        </p>
+                    </Card>
+                ))}
             </Card>
         );
     } else {
