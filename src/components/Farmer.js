@@ -132,6 +132,7 @@ const Friendship = ({ playerDataString, professionsDataString, skillExpDataStrin
         const skillExp = parse(skillExpData, professionSkilltags);
         skillExp.pop();
         // combine skill name, lowerLevel, upperLevel, exp, percentage, maybe combine with professions?
+        // test
         const playerSkills = combineSkillData(skillExp);
 
         return (
