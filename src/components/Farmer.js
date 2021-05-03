@@ -144,27 +144,31 @@ const Friendship = ({ playerDataString, professionsDataString, skillExpDataStrin
             <Card body className="contentCard fileDiv">
                 <h5>Farmer</h5>
                 <Row>
-                    <Col id="Farmer Information">
+                    <Col xl="6" id="Farmer Information" className="mx-auto my-auto">
                         <>
-                            <Card>
-                                <Card.Title>{player[0]["name"]}</Card.Title>
-                                <Card.Text>Day {player[0]["dayOfMonth"]} of {player[0]["currentSeason"]}, Year {player[0]["year"]}</Card.Text>
-                                {player[0]["dayOfMonth"] in calendarData[player[0]["currentSeason"]]
-                                    ? <Card.Text>
-                                        {calendarData[player[0]["currentSeason"]][player[0]["dayOfMonth"]].map((eventName, eventIndex) => (
-                                            <p>{eventName}</p>
-                                        ))}
+                            <Card className="skillCardSize">
+                                <Card.Body className="text-center">
+                                    <h6 className="font-weight-bold">{player[0]["name"]}</h6>
+                                    <Card.Text>
+                                        <br />
+                                        Day {player[0]["dayOfMonth"]} of {player[0]["currentSeason"]}, Year {player[0]["year"]}
                                     </Card.Text>
-                                    : <Card.Text></Card.Text>
-                                }
-                                <Card.Text>{money[0]["totalMoneyEarned"]} gold</Card.Text>
-
+                                    <Card.Text>{money[0]["totalMoneyEarned"]} gold</Card.Text>
+                                    {player[0]["dayOfMonth"] in calendarData[player[0]["currentSeason"]]
+                                        ? <Card.Text>
+                                            {calendarData[player[0]["currentSeason"]][player[0]["dayOfMonth"]].map((eventName, eventIndex) => (
+                                                <p>{eventName}</p>
+                                            ))}
+                                        </Card.Text>
+                                        : <Card.Text></Card.Text>
+                                    }
+                                </Card.Body>
                             </Card>
                         </>
                     </Col>
-                    <Col id="Skills">
-                        <>
-                            {playerSkills.map((skill, skillIndex) => (
+                    <>
+                        {playerSkills.map((skill, skillIndex) => (
+                            <Col xl="6" id="Skills" className="mx-auto my-auto">
                                 <Card className="skillCardSize">
                                     <Container>
                                         <Card.Body body key={skillIndex} >
@@ -195,9 +199,9 @@ const Friendship = ({ playerDataString, professionsDataString, skillExpDataStrin
                                         </Card.Body>
                                     </Container>
                                 </Card>
-                            ))}
-                        </>
-                    </Col>
+                            </Col>
+                        ))}
+                    </>
                 </Row>
             </Card >
         );
