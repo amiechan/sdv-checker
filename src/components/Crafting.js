@@ -10,7 +10,7 @@ const Crafting = ({ craftingDataString }) => {
         const craftingItemList = parse(craftingData, tags);
         console.log(craftingItemList);
         return (
-            <Accordion defaultActiveKey="0">
+            <Accordion id="crafting" defaultActiveKey="0">
                 <Card body className="contentCard fileDiv">
                     <Accordion.Toggle className="p-0" as={Card.Header} eventKey="0">
                         <Card.Title><h5>Crafting</h5></Card.Title>

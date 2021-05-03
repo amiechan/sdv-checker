@@ -11,7 +11,7 @@ const EradicationGoals = ({ monsterDataString }) => {
         const monsterList = parse(monsterData, tags);
         console.log(monsterList);
         return (
-            <Accordion defaultActiveKey="0">
+            <Accordion id="monster" defaultActiveKey="0">
                 <Card body className="contentCard fileDiv">
                     <Accordion.Toggle className="p-0" as={Card.Header} eventKey="0">
                         <Card.Title><h5>Eradication Goals</h5></Card.Title>
