@@ -17,6 +17,7 @@ It was developed as a course project for GUI Programming II at UMass Lowell.
 - Villager name
 - Friendship points
 - Friendship status
+- Villager's Favorite Gifts
 
 ### Crafting:
 - If item has been crafted (missing special craftables)
