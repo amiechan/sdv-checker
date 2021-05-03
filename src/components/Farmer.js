@@ -1,6 +1,7 @@
 import React from "react";
 import { ProgressBar, Card, Row, Col, Container, Image } from "react-bootstrap";
 import parse from "../parse";
+import calendarData from "../data/calendarData";
 
 const Friendship = ({ playerDataString, professionsDataString, skillExpDataString }) => {
 
@@ -132,8 +133,9 @@ const Friendship = ({ playerDataString, professionsDataString, skillExpDataStrin
         const skillExp = parse(skillExpData, professionSkilltags);
         skillExp.pop();
         // combine skill name, lowerLevel, upperLevel, exp, percentage, maybe combine with professions?
-        // test
         const playerSkills = combineSkillData(skillExp);
+
+        console.log(calendarData[player[0]["currentSeason"]][player[0]["dayOfMonth"]]);
 
         return (
             <Card body className="contentCard fileDiv">
@@ -144,6 +146,15 @@ const Friendship = ({ playerDataString, professionsDataString, skillExpDataStrin
                             <Card>
                                 <Card.Title>{player[0]["name"]}</Card.Title>
                                 <Card.Text>Day {player[0]["dayOfMonth"]} of {player[0]["currentSeason"]}, Year {player[0]["year"]}</Card.Text>
+                                {player[0]["dayOfMonth"] in calendarData[player[0]["currentSeason"]] 
+                                    ? <Card.Text>
+                                        {calendarData[player[0]["currentSeason"]][player[0]["dayOfMonth"]].map((eventName, eventIndex) => (
+                                            <p>{eventName}</p>
+                                        ))}
+                                        </Card.Text>
+                                    : <Card.Text></Card.Text>
+                                }
+                                
                             </Card>
                         </>
                     </Col>
