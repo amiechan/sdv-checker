@@ -3,7 +3,7 @@ import {
   Image, Row, Col, Card, ProgressBar, Accordion
 } from "react-bootstrap";
 import parse from "../parse";
-//import returnFavories from "../data/friend_favorites.js";
+import returnFavories from "../data/friend_favorites.js";
 
 const Friendship = ({ data }) => {
   if (data !== "") {
@@ -14,10 +14,8 @@ const Friendship = ({ data }) => {
     let friendList = parse(friendshipData, tags);
     // Henchman isn't a friend
     friendList = friendList.filter(friend => friend["string"] !== 'Henchman');
-    //let friends = returnFavories();
-    //friends['Alex'].map(arr => {
-    //  console.log(arr);
-    //});
+    // Get favorites
+    let favorites = returnFavories();
     return (
       <Card body className="contentCard fileDiv">
         <h5>Friendship</h5>
@@ -40,7 +38,11 @@ const Friendship = ({ data }) => {
                       </Card>
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey="0">
-                      <Card.Body>e x p a n d</Card.Body>
+                      <Card.Body>
+                        <>
+                          {(favorites[friend['string']]).map(item => (<div>{item}</div>))}
+                      </>
+                      </Card.Body>
                     </Accordion.Collapse>
                   </Card>
                 </Accordion>
