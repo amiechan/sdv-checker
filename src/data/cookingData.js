@@ -70,15 +70,15 @@ var cookingData = {
     "730": ["Lobster Bisque"],
     "731": ["Maple Bar"],
     "732": ["Crab Cakes"],
-    "733" :["Shrimp Cocktail"],
-    "253" :["Triple Shot Espresso"],
-    "265" :["Seafoam Pudding"],
-    "903" :["Ginger Ale"],
+    "733": ["Shrimp Cocktail"],
+    "253": ["Triple Shot Espresso"],
+    "265": ["Seafoam Pudding"],
+    "903": ["Ginger Ale"],
     "904": ["Banana Pudding"],
-    "905" :["Mango Sticky Rice"],
-    "906" :["Poi"],
-    "907" :["Tropical Curry"],
-    "921" :["Squid Ink Ravioli"],
+    "905": ["Mango Sticky Rice"],
+    "906": ["Poi"],
+    "907": ["Tropical Curry"],
+    "921": ["Squid Ink Ravioli"],
 };
 
 export default cookingData;

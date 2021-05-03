@@ -127,9 +127,9 @@ const FileUpload = () => {
                 </Row>
             </Card>
 
-            {/* other components */}
+            {/* other components 
             <Farmer playerDataString={playerDataString} professionsDataString={professionsDataString} skillExpDataString={skillExpDataString} />
-            <Friendship friendshipDataString={friendshipDataString} />
+            <Friendship friendshipDataString={friendshipDataString} />*/}
             <Cooking recipeDataString={recipeDataString} cookingDataString={cookingDataString} />
         </div>
     );
