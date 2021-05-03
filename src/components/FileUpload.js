@@ -42,13 +42,39 @@ const FileUpload = () => {
         }
 
     };
+
+    const changeHandler = (e) => {
+        // get file
+        var file = e.target.files[0];
+        console.log("file name:" + file.name);
+
+        var fileRead = new FileReader();
+        fileRead.readAsText(file);
+        fileRead.onloadend = function () {
+            // entire xml file as string
+            var xmlData = fileRead.result;
+
+            // Friendship
+            setFriendshipDataString(
+                getDataString(xmlData, "<friendshipData>", "</friendshipData>")
+            );
+        };
+    };
     return (
         <div>
             {/* File Upload Component */}
             <Card body className="contentCard fileDiv">
                 <Row >
-                    <Col className="col-12 m-3">
-                        <Button type="button" className="btn btn-info" onClick={getTheFile}>Upload save</Button>
+                    <Col xl="3" className="col-12 m-3">
+                        <Button type="button" className="btn btn-info" onClick={getTheFile}>Automatic reupload</Button>
+                        <Row className="pl-3"><h5>OR</h5></Row>
+                        <Form onChange={changeHandler}>
+                            <Form.File
+                                id="file-upload"
+                                label="Manual upload"
+                                custom
+                            />
+                        </Form>
                     </Col>
                     <Col>
                         <div id="fileUploadInfo">
