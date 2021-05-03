@@ -17,7 +17,7 @@ const Museum = ({ museumDataString }) => {
 
         // add undonated items to list
         for (var item in museumData) {
-            if(!(item in translatedList)) {
+            if(!(museumData[item] in translatedList)) {
                 translatedList[museumData[item]] = "Not Donated";
             }
         }
@@ -44,8 +44,8 @@ const Museum = ({ museumDataString }) => {
                             <Row>
                                 {Object.keys(museumList).map(item => (
                                     <Col xl="2" md="6" sm="12" xs="12">
-                                        <Card className={museumList[item]=="Donated" ? 'green' : 'grey'} className="p-3">
-                                            <Card.Title><a href={"https://stardewvalleywiki.com/" + item} target="_blank" rel="noreferrer">{item}</a></Card.Title>
+                                        <Card className="p-3">
+                                            <Card.Title className={museumList[item]=="Donated" ? 'green' : 'grey'} ><a href={"https://stardewvalleywiki.com/" + item} target="_blank" rel="noreferrer">{item}</a></Card.Title>
                                             {museumList[item]}
                                         </Card>
                                     </Col>
