@@ -29,6 +29,34 @@ const Cooking = ({ recipeDataString, cookingDataString }) => {
         return recipeList;
     }
 
+    // combine the data
+    function combineData(recipeList, cookingList) {
+        var combinedData = [];
+
+        for (var item in cookingData) {
+            var owned, hasCooked;
+            
+            if (cookingData[item] in recipeList) {
+                owned = true;
+            } else {
+                owned = false;
+            }
+
+            if (item in cookingList) {
+                hasCooked = true;
+            } else {
+                hasCooked = false;
+            }
+
+            combinedData.push({
+                "string": cookingData[item],
+                "hasRecipe": owned,
+                "hasCooked": hasCooked,
+            })
+        }
+
+        return combinedData;
+    }
     
     if ((recipeDataString !== "") && (cookingDataString !== "")) {
         const parser = new DOMParser();
@@ -44,7 +72,10 @@ const Cooking = ({ recipeDataString, cookingDataString }) => {
         var recipeList = parse(recipeData, recipeTags);
         const cookingList = parse(cookingData, cookingTags);
         recipeList = translateRecipes(recipeList);
-
+        console.log(recipeList);
+        console.log(cookingList);
+        const combinedList = combineData(recipeList, cookingList);
+        console.log(combinedList);
 
         return (
             <Card body className="contentCard fileDiv">
