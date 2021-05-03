@@ -5,6 +5,7 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Farmer from "./Farmer";
 import Friendship from "./Friendship";
+import Cooking from "./Cooking";
 
 function getDataString(data, startTag, endTag) {
     var start = data.indexOf(startTag);
@@ -38,6 +39,11 @@ const FileUpload = () => {
     // Friendship (Villager Name, Points, Status )
     const [friendshipDataString, setFriendshipDataString] = useState("");
 
+    // Friendship (Villager Name, Points, Status )
+    const [recipeDataString, setRecipeDataString] = useState("");
+    const [cookingDataString, setCookingDataString] = useState("");
+    
+
     const changeHandler = (e) => {
         // get file
         var file = e.target.files[0];
@@ -59,10 +65,18 @@ const FileUpload = () => {
             setSkillExpDataString(
                 getDataString(xmlData, "<experiencePoints>", "</experiencePoints>")
             );
-
+            
             // Friendship
             setFriendshipDataString(
                 getDataString(xmlData, "<friendshipData>", "</friendshipData>")
+            );
+            
+            // Cooking
+            setRecipeDataString(
+                getDataString(xmlData, "<cookingRecipes>", "</cookingRecipes>")
+            );
+            setCookingDataString(
+                getDataString(xmlData, "<recipesCooked>", "</recipesCooked>")
             );
         };
     };
@@ -116,6 +130,7 @@ const FileUpload = () => {
             {/* other components */}
             <Farmer playerDataString={playerDataString} professionsDataString={professionsDataString} skillExpDataString={skillExpDataString} />
             <Friendship friendshipDataString={friendshipDataString} />
+            <Cooking recipeDataString={recipeDataString} cookingDataString={cookingDataString} />
         </div>
     );
 };
