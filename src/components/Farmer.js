@@ -149,7 +149,7 @@ const Friendship = ({ playerDataString, professionsDataString, skillExpDataStrin
                     <Col id="Skills">
                         <>
                             {playerSkills.map((skill, skillIndex) => (
-                                <Card>
+                                <Card className="skillCardSize float-right">
                                     <Container>
                                         <br />
                                         <Card.Title className="text-center">
@@ -159,9 +159,9 @@ const Friendship = ({ playerDataString, professionsDataString, skillExpDataStrin
                                         <Card.Body body key={skillIndex} >
                                             <Card.Text>
                                                 <Row>
-                                                    <Col xs xl="1"><p>{skill["lowerBound"]}</p></Col>
-                                                    <Col xs xl="10"><ProgressBar max={skill["totalCurrentLevelExp"]} now={skill["currentLevelExp"]} /></Col>
-                                                    <Col xs xl="1"><p>{skill["upperBound"]}</p></Col>
+                                                    <Col xs xl="2"><p>{skill["lowerBound"]}</p></Col>
+                                                    <Col xs xl="8"><ProgressBar max={skill["totalCurrentLevelExp"]} now={skill["currentLevelExp"]} /></Col>
+                                                    <Col xs xl="2"><p>{skill["upperBound"]}</p></Col>
                                                 </Row>
                                                 <p className="text-center">{skill["currentLevelExp"]} / {skill["totalCurrentLevelExp"]}</p>
                                                 {(15000 - skill["totalSkillExp"]) !== 0 ? (

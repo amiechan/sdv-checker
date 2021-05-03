@@ -75,12 +75,18 @@
     font-size: 8pt;
 }
 
+/* skills */
+.skillCardSize{
+    width: 25rem;
+}
+
 /* friendship */
 .friendCard {
     display: inline-block;
-    width: 200px;
-}
-.heartResize{
     width: 150px;
+}
+
+.heartResize{
+    width: 100px;
     height: auto;
 }
