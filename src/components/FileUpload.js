@@ -83,6 +83,10 @@ const FileUpload = () => {
                     setMuseumDataString(
                         getDataString(xmlData, "<museumPieces>", "</museumPieces>")
                     );
+                    //Crafting
+                    setCraftingDataString(
+                        getDataString(xmlData, "<craftingRecipes>", "</craftingRecipes>")
+                    );
                 };
             }
             else {
