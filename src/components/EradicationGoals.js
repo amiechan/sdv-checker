@@ -24,7 +24,7 @@ const EradicationGoals = ({ monsterDataString }) => {
                                     <Col xl="2" md="6" sm="12" xs="12">
                                         <Card className="p-3">
                                             <Card.Title><a href={"https://stardewvalleywiki.com/" + item['string']} target="_blank" rel="noreferrer">{item['string']}</a></Card.Title>
-                                            <Image className="craftImage" src={`${process.env.PUBLIC_URL}/img/crafting/` + item['string'].replace(/ /g, "_").replace(/:/g, "") + ".png"}></Image>
+                                            <Image className="monsterImage" src={`${process.env.PUBLIC_URL}/img/monsters/` + item['string'].replace(/ /g, "_").replace(/:/g, "") + ".png"}></Image>
                                             {'Slain: ' + item['int']}
                                         </Card>
                                     </Col>
