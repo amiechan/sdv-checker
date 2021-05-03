@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import Card from "react-bootstrap/Card";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+import { Card, Row, Col, Button } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import Farmer from "./Farmer";
 import Friendship from "./Friendship";
@@ -79,34 +77,35 @@ const FileUpload = () => {
         };
     };
 
+    };
     return (
         <div>
             {/* File Upload Component */}
             <Card body className="contentCard fileDiv">
                 <Row>
                     <Col>
-                        <Form onChange={changeHandler}>
-                            <Form.File
-                                id="file-upload"
-                                label="Choose a save file"
-                                custom
-                            />
-                        </Form>
+                        <Button type="button" className="btn btn-info" onClick={getTheFile}>Upload save</Button>
                     </Col>
                     <Col>
                         <div id="fileUploadInfo">
                             This site tracks your progress and achievements for
                             Stardew Valley by reading your save file. The site
                             will be updated with your current progress whenever
-                            you go to bed (ingame). To upload your save:
+                            you go to bed (ingame). Browsers do not allow
+                            files to be automatically reuploaded from system
+                            directories. The default Stardew Valley save directory
+                            is in a system directory. To circumvent this,
+                            follow the folllowing instructions to upload your save:
                             <ol>
                                 <li>
-                                    Find your save file, which is located at:
+                                    The default save folder is located at:
                                     %AppData%\StardewValley\Saves\
                                 </li>
                                 <li>
                                     Run the command mklink /j C:\StardewSaveLink
                                     %AppData%\StardewValley\Saves\
+                                    using the program cmd,
+                                    creating a folder linking your save folder to C:\StardewSaveLink
                                 </li>
                                 <li>
                                     Press the upload button and browse to
