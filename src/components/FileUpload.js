@@ -5,6 +5,7 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Farmer from "./Farmer";
 import Friendship from "./Friendship";
+import Museum from "./Museum";
 
 function getDataString(data, startTag, endTag) {
     var start = data.indexOf(startTag);
@@ -41,6 +42,9 @@ const FileUpload = () => {
     // Friendship (Villager Name, Points, Status )
     const [friendshipDataString, setFriendshipDataString] = useState("");
 
+    // Museum (Donated Item Name)
+    const [museumDataString, setMuseumDataString] = useState("");
+
     const changeHandler = (e) => {
         // get file
         var file = e.target.files[0];
@@ -66,6 +70,11 @@ const FileUpload = () => {
             // Friendship
             setFriendshipDataString(
                 getDataString(xmlData, "<friendshipData>", "</friendshipData>")
+            );
+
+            // Museum
+            setMuseumDataString(
+                getDataString(xmlData, "<museumPieces>", "</museumPieces>")
             );
         };
     };
@@ -119,6 +128,7 @@ const FileUpload = () => {
             {/* other components */}
             <Farmer playerDataString={playerDataString} professionsDataString={professionsDataString} skillExpDataString={skillExpDataString} />
             <Friendship friendshipDataString={friendshipDataString} />
+            <Museum museumDataString={museumDataString} />
         </div>
     );
 };
