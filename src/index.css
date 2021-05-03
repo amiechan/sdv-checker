@@ -102,11 +102,11 @@
 }
 /* museum */
 
-.grey a{
+.grey{
     color: white !important;
     background: grey !important;
 }
-.green a{
+.green{
     color: black !important;
     background: lightgreen !important;
 }

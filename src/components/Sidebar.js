@@ -71,6 +71,7 @@ const Sidebar = () => {
                 <Image className="navIcon" src={ccBundleIcon} />
                 <span className="navText">Community Center</span>
             </Nav.Link>*/}
+
             <Nav.Link href="#monster">
                 <Image className="navIcon" src={eradicationIcon} />
                 <span className="navText">Eradication Goals</span>
@@ -79,6 +80,14 @@ const Sidebar = () => {
                 <Image className="navIcon" src={museumIcon} />
                 <span className="navText">Museum</span>
             </Nav.Link>
+
+            {/*
+            <Nav.Link eventKey="link-12">
+                <Image className="navIcon" src={grandpaIcon} />
+                <span className="navText">Grandpa's Evaluation</span>
+            </Nav.Link>
+            */}
+
             {/*<Nav.Link eventKey="link-12">
                 <Image className="navIcon" src={grandpaIcon} />
                 <span className="navText">Grandpa's Evaluation</span>
