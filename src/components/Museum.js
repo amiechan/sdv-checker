@@ -1,5 +1,5 @@
 import React from "react";
-import { ProgressBar, Card, Row, Col, Container, Image } from "react-bootstrap";
+import { ProgressBar, Card, Row, Col, Container, Image, Accordion } from "react-bootstrap";
 import parse from "../parse";
 import museumData from "../data/museumData";
 
@@ -33,14 +33,28 @@ const Museum = ({ museumDataString }) => {
         museumList = translateMuseumItems(museumList);
         console.log(museumList);
         return (
-            <Card body className="contentCard fileDiv">
-                <h5>Museum</h5>
-                {museumList.map((item, itemIndex) => (
-                    <Card>
-                        {item}
+            <Accordion defaultActiveKey="0">
+                <Card body className="contentCard fileDiv">
+                    <Accordion.Toggle className="p-0" as={Card.Header} eventKey="0">
+                        <Card.Title><h5>Museum</h5></Card.Title>
+                    </Accordion.Toggle>
+
+                    <Accordion.Collapse eventKey="0">
+                        <Card>
+                            <Row>
+                                {Object.keys(museumList).map(item => (
+                                    <Col xl="2" md="6" sm="12" xs="12">
+                                        <Card className={museumList[item]=="Donated" ? 'green' : 'grey'} className="p-3">
+                                            <Card.Title><a href={"https://stardewvalleywiki.com/" + item} target="_blank" rel="noreferrer">{item}</a></Card.Title>
+                                            {museumList[item]}
+                                        </Card>
+                                    </Col>
+                                ))}
+                            </Row>
+                        </Card>
+                    </Accordion.Collapse>
                     </Card>
-                ))}
-            </Card>
+            </Accordion>
         );
     } else {
         return (
