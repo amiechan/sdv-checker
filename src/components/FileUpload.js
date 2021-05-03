@@ -42,6 +42,36 @@ const FileUpload = () => {
     // Eradication Goals (Monster Name, Number Slain )
     const [monsterDataString, setMonsterDataString] = useState("");
 
+    async function getTheFile() {
+        let fileHandle;
+        var lastModified = 0;
+        // Get file location
+        [fileHandle] = await window.showOpenFilePicker();
+        while (true) {
+            // Get file contents
+            const fileData = await fileHandle.getFile();
+            if(lastModified != fileData.lastModified) {
+                lastModified = fileData.lastModified;
+                var fileRead = new FileReader();
+                fileRead.readAsText(fileData);
+                fileRead.onloadend = function () {
+                    // entire xml file as string
+                    var xmlData = fileRead.result;
+                    console.log("xmlData: ", xmlData);
+                    setFriendshipDataString(
+                        getDataString(xmlData, "<friendshipData>", "</friendshipData>")
+                    );
+                };
+            }
+            else {
+                console.log('No change');
+            }
+            // sleep
+            await new Promise(r => setTimeout(r, 20000));
+        }
+
+    };
+
     const changeHandler = (e) => {
         // get file
         var file = e.target.files[0];
@@ -82,13 +112,15 @@ const FileUpload = () => {
         <Card body className="contentCard fileDiv">
             <Row>
                 <Col>
-                    <Form onChange={changeHandler}>
-                        <Form.File
-                            id="file-upload"
-                            label="Choose a save file"
-                            custom
-                        />
-                    </Form>
+                    <Button type="button" className="btn btn-info" onClick={getTheFile}>Automatic reupload</Button>
+                        <Row className="pl-3"><h5>OR</h5></Row>
+                        <Form onChange={changeHandler}>
+                            <Form.File
+                                id="file-upload"
+                                label="Manual upload"
+                                custom
+                            />
+                        </Form>
                     </Col>
                     <Col>
                         <div id="fileUploadInfo">
