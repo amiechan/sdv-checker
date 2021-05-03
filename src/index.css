@@ -87,6 +87,11 @@
 }
 
 .heartResize{
+    height: auto;
+}
+
+.progress {
+    height: 0.75rem !important;
     width: 100px;
     height: auto;
 }
@@ -95,4 +100,14 @@
 
 .monsterImage {
     max-width: 30px;
+}
+/* museum */
+
+.grey a{
+    color: white !important;
+    background: grey !important;
+}
+.green a{
+    color: black !important;
+    background: lightgreen !important;
 }
