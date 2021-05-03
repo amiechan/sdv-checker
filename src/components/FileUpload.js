@@ -77,14 +77,19 @@ const FileUpload = () => {
         };
     };
 
-    };
     return (
         <div>
-            {/* File Upload Component */}
-            <Card body className="contentCard fileDiv">
-                <Row>
-                    <Col>
-                        <Button type="button" className="btn btn-info" onClick={getTheFile}>Upload save</Button>
+        {/* File Upload Component */}
+        <Card body className="contentCard fileDiv">
+            <Row>
+                <Col>
+                    <Form onChange={changeHandler}>
+                        <Form.File
+                            id="file-upload"
+                            label="Choose a save file"
+                            custom
+                        />
+                    </Form>
                     </Col>
                     <Col>
                         <div id="fileUploadInfo">
