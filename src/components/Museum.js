@@ -46,6 +46,7 @@ const Museum = ({ museumDataString }) => {
                                     <Col xl="2" md="6" sm="12" xs="12">
                                         <Card className="p-3">
                                             <Card.Title className={museumList[item]=="Donated" ? 'green' : 'grey'} ><a href={"https://stardewvalleywiki.com/" + item} target="_blank" rel="noreferrer">{item}</a></Card.Title>
+                                            <Image className="museumImage" src={`${process.env.PUBLIC_URL}/img/museum/` + item.replace(/ /g, "_").replace(/:/g, "") + ".png"}></Image>
                                             {museumList[item]}
                                         </Card>
                                     </Col>
