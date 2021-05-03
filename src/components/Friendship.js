@@ -39,6 +39,7 @@ const Friendship = ({ data }) => {
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey="0">
                       <Card.Body>
+                        <p>Best Gifts:</p>
                         <>
                           {favorites[friend['string']].map((item, index) => (
                             <Row className="pb-1 justify-content-md-center">
