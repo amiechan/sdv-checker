@@ -18,7 +18,7 @@ import grandpaIcon from "../img/navIcons/grandpaIcon.png";
 
 const Sidebar = () => {
     return (
-        <Nav defaultActiveKey="Farmer" className="flex-column" variant="pills">
+        <Nav defaultActiveKey="#farmer" className="flex-column" variant="pills">
             {/* Nav Header */}
             <Nav.Item className="navHeader">
                 <a href="#upload"><Image className="navHeaderIcon" src={projectIcon} /></a>
@@ -70,8 +70,8 @@ const Sidebar = () => {
             <Nav.Link eventKey="link-9">
                 <Image className="navIcon" src={ccBundleIcon} />
                 <span className="navText">Community Center</span>
-            </Nav.Link>
-        */}
+            </Nav.Link>*/}
+
             <Nav.Link href="#monster">
                 <Image className="navIcon" src={eradicationIcon} />
                 <span className="navText">Eradication Goals</span>
@@ -80,12 +80,18 @@ const Sidebar = () => {
                 <Image className="navIcon" src={museumIcon} />
                 <span className="navText">Museum</span>
             </Nav.Link>
+
             {/*
             <Nav.Link eventKey="link-12">
                 <Image className="navIcon" src={grandpaIcon} />
                 <span className="navText">Grandpa's Evaluation</span>
             </Nav.Link>
             */}
+
+            {/*<Nav.Link eventKey="link-12">
+                <Image className="navIcon" src={grandpaIcon} />
+                <span className="navText">Grandpa's Evaluation</span>
+            </Nav.Link>*/}
         </Nav>
     );
 };
