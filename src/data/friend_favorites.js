@@ -1,7 +1,7 @@
 function returnFavories() {
     return {
         'Alex': ["Complete Breakfast", "Salmon Dinner"],
-        'Elliot': ["Crab Cakes", "Duck Feather", "Lobster", "Pomegranate", "Squid Ink", "Tom Kha Soup"],
+        'Elliott': ["Crab Cakes", "Duck Feather", "Lobster", "Pomegranate", "Squid Ink", "Tom Kha Soup"],
         'Harvey': ["Coffee", "Pickles", "Super Meal", "Truffle Oil", "Wine"],
         'Sam': ["Cactus Fruit", "Maple Bar", "Pizza", "Tigerseye"],
         'Sebastian': ["Frozen Tear", "Obsidian", "Pumpkin Soup", "Sashimi", "Void Egg"],

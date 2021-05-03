@@ -26,9 +26,9 @@ const Friendship = ({ data }) => {
                 <Accordion>
                   <Card className="friendCard">
                     <Accordion.Toggle className="p-0" as={Card.Header} eventKey="0">
-                      <Card body key={index} className="friendCard">
+                      <Card className="p-0" body key={index} className="friendCard">
                         <Card.Title><a href={"https://stardewvalleywiki.com/" + friend['string']} target="_blank" rel="noreferrer">{friend['string']}</a></Card.Title>
-                        <Card.Img fluid="true" variant="top" src={`${process.env.PUBLIC_URL}/img/villagers/` + friend['string'] + `.png`} />
+                        <Image fluid="true" variant="top" src={`${process.env.PUBLIC_URL}/img/villagers/` + friend['string'] + `.png`} />
                         <div className="text-center">
                           <br />
                           {friend['Points'] % 250} / 250
@@ -40,8 +40,13 @@ const Friendship = ({ data }) => {
                     <Accordion.Collapse eventKey="0">
                       <Card.Body>
                         <>
-                          {(favorites[friend['string']]).map(item => (<div>{item}</div>))}
-                      </>
+                          {favorites[friend['string']].map((item, index) => (
+                            <Row className="pb-1 justify-content-md-center">
+                              <Image className="pr-1" src={`${process.env.PUBLIC_URL}/img/favorites/` + item.replace(/ /g, "_") + `.png`} />
+                              <a href={"https://stardewvalleywiki.com/" + item} target="_blank" rel="noreferrer">{item}</a>
+                            </Row>
+                          ))}
+                        </>
                       </Card.Body>
                     </Accordion.Collapse>
                   </Card>
