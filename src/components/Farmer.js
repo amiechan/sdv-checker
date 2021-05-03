@@ -157,7 +157,7 @@ const Friendship = ({ playerDataString, professionsDataString, skillExpDataStrin
                                     {player[0]["dayOfMonth"] in calendarData[player[0]["currentSeason"]]
                                         ? <Card.Text>
                                             {calendarData[player[0]["currentSeason"]][player[0]["dayOfMonth"]].map((eventName, eventIndex) => (
-                                                <p>{eventName}</p>
+                                                <p><Image src={`${process.env.PUBLIC_URL}/img/events/eventFlag.gif`} /> {eventName}</p>
                                             ))}
                                         </Card.Text>
                                         : <Card.Text></Card.Text>
