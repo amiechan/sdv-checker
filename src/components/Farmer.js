@@ -1,6 +1,7 @@
 import React from "react";
 import { ProgressBar, Card, Row, Col, Container, Image } from "react-bootstrap";
 import parse from "../parse";
+import calendarData from "../data/calendarData";
 
 const Friendship = ({ playerDataString, professionsDataString, skillExpDataString }) => {
 
@@ -112,43 +113,62 @@ const Friendship = ({ playerDataString, professionsDataString, skillExpDataStrin
         return professions;
     }
 
-    if ((professionsDataString !== "") && (skillExpDataString !== "")) {
+    if ((playerDataString !== "") && (professionsDataString !== "") && (skillExpDataString !== "")) {
         const parser = new DOMParser();
+        var totalMoneyData = playerDataString.substring(playerDataString.indexOf("<totalMoneyEarned>"), playerDataString.indexOf("</totalMoneyEarned>") + 19);
+        var playerDataStringSlice = playerDataString.slice(0, playerDataString.length - totalMoneyData.length);
         // XMLDocument object returned by parseFromString to get elements from
         // name, day, season, year
-        const playerData = parser.parseFromString(playerDataString, "text/xml");
+        const playerData = parser.parseFromString(playerDataStringSlice, "text/xml");
+        const moneyData = parser.parseFromString(totalMoneyData, "text/xml");
         const professionsData = parser.parseFromString(professionsDataString, "text/xml");
         const skillExpData = parser.parseFromString(skillExpDataString, "text/xml");
-        const farmerInfoTags = ["name", "dayOfMonth", "currentSeason", "year"]
-        const professionSkilltags = ["int"];
+
+        const farmerInfoTags = ["name", "dayOfMonth", "currentSeason", "year"];
+        const moneyTags = ["totalMoneyEarned"];
+        const professionSkillTags = ["int"];
 
         const player = parse(playerData, farmerInfoTags);
-
-        const professions = parse(professionsData, professionSkilltags);
+        const money = parse(moneyData, moneyTags);
+        const professions = parse(professionsData, professionSkillTags);
         const playerProfessions = defineProfessions(professions);
-
         // order: farming, fishing, foraging, mining, combat 
         // 6th skill parsed is "Luck", but not currently implemented in the game
-        const skillExp = parse(skillExpData, professionSkilltags);
+        const skillExp = parse(skillExpData, professionSkillTags);
         skillExp.pop();
         // combine skill name, lowerLevel, upperLevel, exp, percentage, maybe combine with professions?
         const playerSkills = combineSkillData(skillExp);
+        console.log(money);
 
         return (
             <Card body className="contentCard fileDiv">
                 <h5>Farmer</h5>
                 <Row>
-                    <Col id="Farmer Information">
+                    <Col xl="6" id="Farmer Information" className="mx-auto my-auto">
                         <>
-                            <Card>
-                                <Card.Title>{player[0]["name"]}</Card.Title>
-                                <Card.Text>Day {player[0]["dayOfMonth"]} of {player[0]["currentSeason"]}, Year {player[0]["year"]}</Card.Text>
+                            <Card className="skillCardSize">
+                                <Card.Body className="text-center">
+                                    <h6 className="font-weight-bold">{player[0]["name"]}</h6>
+                                    <Card.Text>
+                                        <br />
+                                        Day {player[0]["dayOfMonth"]} of {player[0]["currentSeason"]}, Year {player[0]["year"]}
+                                    </Card.Text>
+                                    <Card.Text>{money[0]["totalMoneyEarned"]} gold</Card.Text>
+                                    {player[0]["dayOfMonth"] in calendarData[player[0]["currentSeason"]]
+                                        ? <Card.Text>
+                                            {calendarData[player[0]["currentSeason"]][player[0]["dayOfMonth"]].map((eventName, eventIndex) => (
+                                                <p>{eventName}</p>
+                                            ))}
+                                        </Card.Text>
+                                        : <Card.Text></Card.Text>
+                                    }
+                                </Card.Body>
                             </Card>
                         </>
                     </Col>
-                    <Col id="Skills">
-                        <>
-                            {playerSkills.map((skill, skillIndex) => (
+                    <>
+                        {playerSkills.map((skill, skillIndex) => (
+                            <Col xl="6" id="Skills" className="mx-auto my-auto">
                                 <Card className="skillCardSize">
                                     <Container>
                                         <Card.Body body key={skillIndex} >
@@ -179,9 +199,9 @@ const Friendship = ({ playerDataString, professionsDataString, skillExpDataStrin
                                         </Card.Body>
                                     </Container>
                                 </Card>
-                            ))}
-                        </>
-                    </Col>
+                            </Col>
+                        ))}
+                    </>
                 </Row>
             </Card >
         );

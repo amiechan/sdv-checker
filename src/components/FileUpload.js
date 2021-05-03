@@ -25,7 +25,10 @@ function getPlayerData(data) {
     var playerYear = getDataString(data, "<year>", "</year>");
     var playerDay = getDataString(data, "<dayOfMonth>", "</dayOfMonth>");
     var endingTag = "</data></playerInfo>";
-    var playerString = starterTag.concat(playerName, playerDay, playerSeason, playerYear, endingTag);
+    // is this important?
+    // var versionNumber = getDataString(data, "<gameVersion>", "</gameVersion>");
+    var totalMoney = getDataString(data, "<totalMoneyEarned>", "</totalMoneyEarned>");
+    var playerString = starterTag.concat(playerName, playerDay, playerSeason, playerYear, endingTag, totalMoney);
     return playerString;
 };
 
