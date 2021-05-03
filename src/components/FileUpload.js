@@ -196,9 +196,9 @@ const FileUpload = () => {
             {/* other components */}
             <Farmer playerDataString={playerDataString} professionsDataString={professionsDataString} skillExpDataString={skillExpDataString} />
             <Friendship friendshipDataString={friendshipDataString} />
+            <Crafting craftingDataString={craftingDataString} />
             <EradicationGoals monsterDataString={monsterDataString} />
             <Museum museumDataString={museumDataString} />
-            <Crafting craftingDataString={craftingDataString} />
         </div>
     );
 };
