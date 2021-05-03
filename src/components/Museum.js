@@ -33,7 +33,7 @@ const Museum = ({ museumDataString }) => {
         museumList = translateMuseumItems(museumList);
         console.log(museumList);
         return (
-            <Accordion defaultActiveKey="0">
+            <Accordion id="museum" defaultActiveKey="0">
                 <Card body className="contentCard fileDiv">
                     <Accordion.Toggle className="p-0" as={Card.Header} eventKey="0">
                         <Card.Title><h5>Museum</h5></Card.Title>

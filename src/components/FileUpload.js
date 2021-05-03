@@ -149,7 +149,7 @@ const FileUpload = () => {
     return (
         <div>
             {/* File Upload Component */}
-            <Card body className="contentCard fileDiv">
+            <Card id="upload" body className="contentCard fileDiv">
                 <Row>
                     <Col>
                         <Button type="button" className="btn btn-info" onClick={getTheFile}>Automatic reupload</Button>

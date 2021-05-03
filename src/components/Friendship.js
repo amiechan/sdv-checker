@@ -15,7 +15,7 @@ const Friendship = ({ friendshipDataString }) => {
     // Get favorites
     let favorites = returnFavories();
     return (
-      <Accordion defaultActiveKey="0">
+      <Accordion id="friends"  defaultActiveKey="0">
         <Card body>
             <Accordion.Toggle className="p-1" as={Card.Header} eventKey="0">
             <Card.Title><h5>Friends</h5></Card.Title>

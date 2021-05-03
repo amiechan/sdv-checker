@@ -21,12 +21,12 @@ const Sidebar = () => {
         <Nav defaultActiveKey="Farmer" className="flex-column" variant="pills">
             {/* Nav Header */}
             <Nav.Item className="navHeader">
-                <Image className="navHeaderIcon" src={projectIcon} />
+                <a href="#upload"><Image className="navHeaderIcon" src={projectIcon} /></a>
                 <span className="navHeaderText">sdv-checker</span>
             </Nav.Item>
 
             {/* Nav Menu */}
-            <Nav.Link eventKey="Farmer">
+            <Nav.Link href="#farmer">
                 <Image className="navIcon" src={playerIcon} />
                 <span className="navText">Farmer</span>
             </Nav.Link>
@@ -39,11 +39,11 @@ const Sidebar = () => {
             </Nav.Link>
             */}
 
-            <Nav.Link eventKey="link-2">
+            <Nav.Link href="#friends">
                 <Image className="navIcon" src={friendshipIcon} />
                 <span className="navText">Friendship</span>
             </Nav.Link>
-            <Nav.Link eventKey="link-3">
+            <Nav.Link  href="#crafting">
                 <Image className="navIcon" src={craftingIcon} />
                 <span className="navText">Crafting</span>
             </Nav.Link>
@@ -71,11 +71,11 @@ const Sidebar = () => {
                 <Image className="navIcon" src={ccBundleIcon} />
                 <span className="navText">Community Center</span>
             </Nav.Link>
-            <Nav.Link eventKey="link-10">
+            <Nav.Link href="#monster">
                 <Image className="navIcon" src={eradicationIcon} />
                 <span className="navText">Eradication Goals</span>
             </Nav.Link>
-            <Nav.Link eventKey="link-11">
+            <Nav.Link href="#museum">
                 <Image className="navIcon" src={museumIcon} />
                 <span className="navText">Museum</span>
             </Nav.Link>
