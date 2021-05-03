@@ -149,14 +149,11 @@ const Friendship = ({ playerDataString, professionsDataString, skillExpDataStrin
                     <Col id="Skills">
                         <>
                             {playerSkills.map((skill, skillIndex) => (
-                                <Card className="skillCardSize float-right">
+                                <Card className="skillCardSize">
                                     <Container>
-                                        <br />
-                                        <Card.Title className="text-center">
-                                            {skill["name"]} (Level {skill["currentLevel"]}) <br /> <br />
-                                            <Image src={`${process.env.PUBLIC_URL}/img/skillIcons/` + skill["name"] + `.png`} />
-                                        </Card.Title>
                                         <Card.Body body key={skillIndex} >
+                                            <h6 className="text-center font-weight-bold">{skill["name"]} (Level {skill["currentLevel"]}) </h6>
+                                            <div className="text-center"><Image src={`${process.env.PUBLIC_URL}/img/skillIcons/` + skill["name"] + `.png`} /></div>
                                             <Card.Text>
                                                 <Row>
                                                     <Col xs xl="2"><p>{skill["lowerBound"]}</p></Col>
