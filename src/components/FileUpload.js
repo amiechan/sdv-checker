@@ -15,23 +15,28 @@ const FileUpload = () => {
 
     async function getTheFile() {
         let fileHandle;
+        var lastModified = 0;
         // Get file location
         [fileHandle] = await window.showOpenFilePicker();
         while (true) {
             // Get file contents
             const fileData = await fileHandle.getFile();
-            console.log("file submitted");
-
-            var fileRead = new FileReader();
-            fileRead.readAsText(fileData);
-            fileRead.onloadend = function () {
-                // entire xml file as string
-                var xmlData = fileRead.result;
-                console.log("xmlData: ", xmlData);
-                setFriendshipDataString(
-                    getDataString(xmlData, "<friendshipData>", "</friendshipData>")
-                );
-            };
+            if(lastModified != fileData.lastModified) {
+                lastModified = fileData.lastModified;
+                var fileRead = new FileReader();
+                fileRead.readAsText(fileData);
+                fileRead.onloadend = function () {
+                    // entire xml file as string
+                    var xmlData = fileRead.result;
+                    console.log("xmlData: ", xmlData);
+                    setFriendshipDataString(
+                        getDataString(xmlData, "<friendshipData>", "</friendshipData>")
+                    );
+                };
+            }
+            else {
+                console.log('No change');
+            }
             // sleep
             await new Promise(r => setTimeout(r, 20000));
         }
