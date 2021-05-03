@@ -90,3 +90,9 @@
     width: 100px;
     height: auto;
 }
+
+/* monsters */
+
+.monsterImage {
+    max-width: 30px;
+}
