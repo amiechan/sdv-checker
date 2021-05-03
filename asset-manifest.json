@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/sdv-checker/static/css/main.c1065ee5.chunk.css",
-    "main.js": "/sdv-checker/static/js/main.a6871697.chunk.js",
-    "main.js.map": "/sdv-checker/static/js/main.a6871697.chunk.js.map",
+    "main.css": "/sdv-checker/static/css/main.1a1c23f8.chunk.css",
+    "main.js": "/sdv-checker/static/js/main.f5377249.chunk.js",
+    "main.js.map": "/sdv-checker/static/js/main.f5377249.chunk.js.map",
     "runtime-main.js": "/sdv-checker/static/js/runtime-main.3ed303e1.js",
     "runtime-main.js.map": "/sdv-checker/static/js/runtime-main.3ed303e1.js.map",
     "static/css/2.4c97ca4f.chunk.css": "/sdv-checker/static/css/2.4c97ca4f.chunk.css",
@@ -10,14 +10,14 @@
     "static/js/2.4c3c55c2.chunk.js.map": "/sdv-checker/static/js/2.4c3c55c2.chunk.js.map",
     "index.html": "/sdv-checker/index.html",
     "static/css/2.4c97ca4f.chunk.css.map": "/sdv-checker/static/css/2.4c97ca4f.chunk.css.map",
-    "static/css/main.c1065ee5.chunk.css.map": "/sdv-checker/static/css/main.c1065ee5.chunk.css.map",
+    "static/css/main.1a1c23f8.chunk.css.map": "/sdv-checker/static/css/main.1a1c23f8.chunk.css.map",
     "static/js/2.4c3c55c2.chunk.js.LICENSE.txt": "/sdv-checker/static/js/2.4c3c55c2.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.3ed303e1.js",
     "static/css/2.4c97ca4f.chunk.css",
     "static/js/2.4c3c55c2.chunk.js",
-    "static/css/main.c1065ee5.chunk.css",
-    "static/js/main.a6871697.chunk.js"
+    "static/css/main.1a1c23f8.chunk.css",
+    "static/js/main.f5377249.chunk.js"
   ]
 }
