@@ -100,4 +100,13 @@
 
 .monsterImage {
     max-width: 30px;
+/* museum */
+
+.grey a{
+    color: white !important;
+    background: grey !important;
+}
+.green a{
+    color: black !important;
+    background: lightgreen !important;
 }

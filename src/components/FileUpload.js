@@ -4,6 +4,7 @@ import Form from "react-bootstrap/Form";
 import Farmer from "./Farmer";
 import Friendship from "./Friendship";
 import EradicationGoals from "./EradicationGoals";
+import Museum from "./Museum";
 
 function getDataString(data, startTag, endTag) {
     var start = data.indexOf(startTag);
@@ -36,7 +37,7 @@ const FileUpload = () => {
     const [playerDataString, setPlayerDataString] = useState("");
     const [professionsDataString, setProfessionsDataString] = useState("");
     const [skillExpDataString, setSkillExpDataString] = useState("");
-    
+
     // Friendship (Villager Name, Points, Status )
     const [friendshipDataString, setFriendshipDataString] = useState("");
     // Eradication Goals (Monster Name, Number Slain )
@@ -50,16 +51,36 @@ const FileUpload = () => {
         while (true) {
             // Get file contents
             const fileData = await fileHandle.getFile();
-            if(lastModified != fileData.lastModified) {
+            if (lastModified != fileData.lastModified) {
                 lastModified = fileData.lastModified;
                 var fileRead = new FileReader();
                 fileRead.readAsText(fileData);
                 fileRead.onloadend = function () {
                     // entire xml file as string
                     var xmlData = fileRead.result;
-                    console.log("xmlData: ", xmlData);
+                    // Player
+                    setPlayerDataString(
+                        getPlayerData(xmlData)
+                    );
+                    setProfessionsDataString(
+                        getDataString(xmlData, "<professions>", "</professions>")
+                    );
+                    setSkillExpDataString(
+                        getDataString(xmlData, "<experiencePoints>", "</experiencePoints>")
+                    );
+
+                    // Friendship
                     setFriendshipDataString(
                         getDataString(xmlData, "<friendshipData>", "</friendshipData>")
+                    );
+
+                    // Eradication Goals
+                    setMonsterDataString(
+                        getDataString(xmlData, "<specificMonstersKilled>", "</specificMonstersKilled>")
+                    );
+                    // Museum
+                    setMuseumDataString(
+                        getDataString(xmlData, "<museumPieces>", "</museumPieces>")
                     );
                 };
             }
@@ -71,6 +92,9 @@ const FileUpload = () => {
         }
 
     };
+
+    // Museum (Donated Item Name)
+    const [museumDataString, setMuseumDataString] = useState("");
 
     const changeHandler = (e) => {
         // get file
@@ -103,16 +127,20 @@ const FileUpload = () => {
             setMonsterDataString(
                 getDataString(xmlData, "<specificMonstersKilled>", "</specificMonstersKilled>")
             );
+            // Museum
+            setMuseumDataString(
+                getDataString(xmlData, "<museumPieces>", "</museumPieces>")
+            );
         };
     };
 
     return (
         <div>
-        {/* File Upload Component */}
-        <Card body className="contentCard fileDiv">
-            <Row>
-                <Col>
-                    <Button type="button" className="btn btn-info" onClick={getTheFile}>Automatic reupload</Button>
+            {/* File Upload Component */}
+            <Card body className="contentCard fileDiv">
+                <Row>
+                    <Col>
+                        <Button type="button" className="btn btn-info" onClick={getTheFile}>Automatic reupload</Button>
                         <Row className="pl-3"><h5>OR</h5></Row>
                         <Form onChange={changeHandler}>
                             <Form.File
@@ -160,7 +188,8 @@ const FileUpload = () => {
             {/* other components */}
             <Farmer playerDataString={playerDataString} professionsDataString={professionsDataString} skillExpDataString={skillExpDataString} />
             <Friendship friendshipDataString={friendshipDataString} />
-            <EradicationGoals  monsterDataString={monsterDataString} />
+            <EradicationGoals monsterDataString={monsterDataString} />
+            <Museum museumDataString={museumDataString} />
         </div>
     );
 };
