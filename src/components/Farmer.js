@@ -113,29 +113,32 @@ const Friendship = ({ playerDataString, professionsDataString, skillExpDataStrin
         return professions;
     }
 
-    if ((professionsDataString !== "") && (skillExpDataString !== "")) {
+    if ((playerDataString !== "") && (professionsDataString !== "") && (skillExpDataString !== "")) {
         const parser = new DOMParser();
+        var totalMoneyData = playerDataString.substring(playerDataString.indexOf("<totalMoneyEarned>"), playerDataString.indexOf("</totalMoneyEarned>") + 19);
+        var playerDataStringSlice = playerDataString.slice(0, playerDataString.length - totalMoneyData.length);
         // XMLDocument object returned by parseFromString to get elements from
         // name, day, season, year
-        const playerData = parser.parseFromString(playerDataString, "text/xml");
+        const playerData = parser.parseFromString(playerDataStringSlice, "text/xml");
+        const moneyData = parser.parseFromString(totalMoneyData, "text/xml");
         const professionsData = parser.parseFromString(professionsDataString, "text/xml");
         const skillExpData = parser.parseFromString(skillExpDataString, "text/xml");
-        const farmerInfoTags = ["name", "dayOfMonth", "currentSeason", "year"]
-        const professionSkilltags = ["int"];
+
+        const farmerInfoTags = ["name", "dayOfMonth", "currentSeason", "year"];
+        const moneyTags = ["totalMoneyEarned"];
+        const professionSkillTags = ["int"];
         
         const player = parse(playerData, farmerInfoTags);
-
-        const professions = parse(professionsData, professionSkilltags);
+        const money = parse(moneyData, moneyTags);
+        const professions = parse(professionsData, professionSkillTags);
         const playerProfessions = defineProfessions(professions);
-
         // order: farming, fishing, foraging, mining, combat 
         // 6th skill parsed is "Luck", but not currently implemented in the game
-        const skillExp = parse(skillExpData, professionSkilltags);
+        const skillExp = parse(skillExpData, professionSkillTags);
         skillExp.pop();
         // combine skill name, lowerLevel, upperLevel, exp, percentage, maybe combine with professions?
         const playerSkills = combineSkillData(skillExp);
-
-        console.log(calendarData[player[0]["currentSeason"]][player[0]["dayOfMonth"]]);
+        console.log(money);
 
         return (
             <Card body className="contentCard fileDiv">
@@ -154,6 +157,7 @@ const Friendship = ({ playerDataString, professionsDataString, skillExpDataStrin
                                         </Card.Text>
                                     : <Card.Text></Card.Text>
                                 }
+                                <Card.Text>{money[0]["totalMoneyEarned"]} gold</Card.Text>
                                 
                             </Card>
                         </>
