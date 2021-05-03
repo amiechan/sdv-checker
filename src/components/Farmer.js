@@ -121,7 +121,7 @@ const Friendship = ({ playerDataString, professionsDataString, skillExpDataStrin
         const skillExpData = parser.parseFromString(skillExpDataString, "text/xml");
         const farmerInfoTags = ["name", "dayOfMonth", "currentSeason", "year"]
         const professionSkilltags = ["int"];
-        
+
         const player = parse(playerData, farmerInfoTags);
 
         const professions = parse(professionsData, professionSkilltags);
@@ -149,19 +149,18 @@ const Friendship = ({ playerDataString, professionsDataString, skillExpDataStrin
                     <Col id="Skills">
                         <>
                             {playerSkills.map((skill, skillIndex) => (
-                                <Card>
+                                <Card className="skillCardSize">
                                     <Container>
-                                        <br />
-                                        <Card.Title className="text-center" >{skill["name"]} (Level {skill["currentLevel"]})</Card.Title>
-                                        <Image src={`${process.env.PUBLIC_URL}/img/skillIcons/` + skill["name"] + `.png`} />
                                         <Card.Body body key={skillIndex} >
+                                            <h6 className="text-center font-weight-bold">{skill["name"]} (Level {skill["currentLevel"]}) </h6>
+                                            <div className="text-center"><Image src={`${process.env.PUBLIC_URL}/img/skillIcons/` + skill["name"] + `.png`} /></div>
                                             <Card.Text>
                                                 <Row>
-                                                    <Col xs xl="1"><p>{skill["lowerBound"]}</p></Col>
-                                                    <Col xs xl="10"><ProgressBar max={skill["totalCurrentLevelExp"]} now={skill["currentLevelExp"]} /></Col>
-                                                    <Col xs xl="1"><p>{skill["upperBound"]}</p></Col>
+                                                    <Col xs xl="2"><p>{skill["lowerBound"]}</p></Col>
+                                                    <Col xs xl="8"><ProgressBar max={skill["totalCurrentLevelExp"]} now={skill["currentLevelExp"]} /></Col>
+                                                    <Col xs xl="2"><p>{skill["upperBound"]}</p></Col>
                                                 </Row>
-                                                <p className="text-center">{skill["currentLevelExp"]}/{skill["totalCurrentLevelExp"]}</p>
+                                                <p className="text-center">{skill["currentLevelExp"]} / {skill["totalCurrentLevelExp"]}</p>
                                                 {(15000 - skill["totalSkillExp"]) !== 0 ? (
                                                     <Row className="text-center">
                                                         <Col xs lg="6"><p>{skill["totalCurrentLevelExp"] - skill["currentLevelExp"]} XP to next level</p></Col>
@@ -170,24 +169,21 @@ const Friendship = ({ playerDataString, professionsDataString, skillExpDataStrin
                                                 ) : (<></>)}
                                                 <Row className="text-center">
                                                     {(skill["currentLevel"]) >= 5 ? (
-                                                        <Col xs lg="6"><p>{playerProfessions[skill["name"]][0]}</p></Col>
+                                                        <Col xs lg="6"><p className="font-weight-bold">{playerProfessions[skill["name"]][0]}</p></Col>
                                                     ) : (<></>)}
                                                     {(skill["currentLevel"]) === 10 ? (
-                                                        <Col xs lg="6"><p>{playerProfessions[skill["name"]][1]}</p></Col>
+                                                        <Col xs lg="6"><p className="font-weight-bold">{playerProfessions[skill["name"]][1]}</p></Col>
                                                     ) : (<></>)}
                                                 </Row>
-
-
                                             </Card.Text>
                                         </Card.Body>
                                     </Container>
                                 </Card>
-
                             ))}
                         </>
                     </Col>
                 </Row>
-            </Card>
+            </Card >
         );
     } else {
         return (

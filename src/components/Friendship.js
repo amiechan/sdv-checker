@@ -24,9 +24,9 @@ const Friendship = ({ friendshipDataString }) => {
                   <Card.Text>
                     <br />
                     <ProgressBar max="250" variant="danger" now={(friend['Points'] % 250)} />
-                    {friend['Points'] % 250} / 250
-                    <img class="heartResize" src={`${process.env.PUBLIC_URL}/img/hearts/` + Math.floor(friend['Points'] / 250) + `_hearts.png`}></img>
-                    {Math.floor(friend['Points'] / 250)} / 10
+                    <p className="text-center"> {friend['Points'] % 250} / 250 </p>
+                    <img class="heartResize" src={`${process.env.PUBLIC_URL}/img/hearts/` + Math.floor(friend['Points'] / 250) + `_hearts.png`} alt=""></img>
+                    <p className="text-center"> {Math.floor(friend['Points'] / 250)} / 10 </p>
                   </Card.Text>
                 </Card>
               </Col>
