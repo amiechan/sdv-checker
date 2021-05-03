@@ -50,15 +50,21 @@ const FileUpload = () => {
                             This site tracks your progress and achievements for
                             Stardew Valley by reading your save file. The site
                             will be updated with your current progress whenever
-                            you go to bed (ingame). To upload your save:
+                            you go to bed (ingame). Browsers do not allow
+                            files to be automatically reuploaded from system
+                            directories. The default Stardew Valley save directory
+                            is in a system directory. To circumvent this,
+                            follow the folllowing instructions to upload your save:
                             <ol>
                                 <li>
-                                    Find your save file, which is located at:
+                                    The default save folder is located at:
                                     %AppData%\StardewValley\Saves\
                                 </li>
                                 <li>
                                     Run the command mklink /j C:\StardewSaveLink
                                     %AppData%\StardewValley\Saves\
+                                    using the program cmd,
+                                    creating a folder linking your save folder to C:\StardewSaveLink
                                 </li>
                                 <li>
                                     Press the upload button and browse to
