@@ -5,6 +5,7 @@ import Farmer from "./Farmer";
 import Friendship from "./Friendship";
 import EradicationGoals from "./EradicationGoals";
 import Museum from "./Museum";
+import Crafting from "./Crafting";
 
 function getDataString(data, startTag, endTag) {
     var start = data.indexOf(startTag);
@@ -96,6 +97,9 @@ const FileUpload = () => {
     // Museum (Donated Item Name)
     const [museumDataString, setMuseumDataString] = useState("");
 
+    // Crafting
+    const [craftingDataString, setCraftingDataString] = useState("");
+
     const changeHandler = (e) => {
         // get file
         var file = e.target.files[0];
@@ -130,6 +134,10 @@ const FileUpload = () => {
             // Museum
             setMuseumDataString(
                 getDataString(xmlData, "<museumPieces>", "</museumPieces>")
+            );
+            //Crafting
+            setCraftingDataString(
+                getDataString(xmlData, "<craftingRecipes>", "</craftingRecipes>")
             );
         };
     };
@@ -190,6 +198,7 @@ const FileUpload = () => {
             <Friendship friendshipDataString={friendshipDataString} />
             <EradicationGoals monsterDataString={monsterDataString} />
             <Museum museumDataString={museumDataString} />
+            <Crafting craftingDataString={craftingDataString} />
         </div>
     );
 };
