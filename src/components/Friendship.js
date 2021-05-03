@@ -29,14 +29,14 @@ const Friendship = ({ data }) => {
                   <Card className="friendCard">
                     <Accordion.Toggle className="p-0" as={Card.Header} eventKey="0">
                       <Card body key={index} className="friendCard">
-                        <Card.Title><a href={"https://stardewvalleywiki.com/" + friend['string']} target="_blank">{friend['string']}</a></Card.Title>
+                        <Card.Title><a href={"https://stardewvalleywiki.com/" + friend['string']} target="_blank" rel="noreferrer">{friend['string']}</a></Card.Title>
                         <Card.Img fluid="true" variant="top" src={`${process.env.PUBLIC_URL}/img/villagers/` + friend['string'] + `.png`} />
-                        <Card.Text className="text-center">
+                        <div className="text-center">
                           <br />
                           {friend['Points'] % 250} / 250
                           <ProgressBar className="mb-3" max="250" variant="danger" now={(friend['Points'] % 250)} />
                           <Image fluid="true" className="heartResize" src={`${process.env.PUBLIC_URL}/img/hearts/` + Math.floor(friend['Points'] / 250) + `_hearts_stack.png`}></Image>
-                        </Card.Text>
+                        </div>
                       </Card>
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey="0">
