@@ -1,5 +1,5 @@
 import React from "react";
-import { ProgressBar, Card, Row, Col, Container, Image } from "react-bootstrap";
+import { ProgressBar, Card, Row, Col, Container, Image, Accordion } from "react-bootstrap";
 import parse from "../parse";
 import calendarData from "../data/calendarData";
 
@@ -141,8 +141,13 @@ const Friendship = ({ playerDataString, professionsDataString, skillExpDataStrin
         console.log(money);
 
         return (
-            <Card body className="contentCard fileDiv">
-                <h5>Farmer</h5>
+            <Accordion defaultActiveKey="0">
+                <Card body className="contentCard fileDiv">
+                    <Accordion.Toggle className="p-0" as={Card.Header} eventKey="0">
+                        <Card.Title><h5>Museum</h5></Card.Title>
+                    </Accordion.Toggle>
+
+                    <Accordion.Collapse eventKey="0">
                 <Row>
                     <Col xl="6" id="Farmer Information" className="mx-auto my-auto">
                         <>
@@ -203,7 +208,9 @@ const Friendship = ({ playerDataString, professionsDataString, skillExpDataStrin
                         ))}
                     </>
                 </Row>
-            </Card >
+                    </Accordion.Collapse>
+                    </Card>
+            </Accordion>
         );
     } else {
         return (
